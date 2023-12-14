@@ -14,6 +14,7 @@ export default function Home() {
         <SearchBar
           accessToken={accessToken}
           setIsLoading={setIsLoading}
+          isLoading={isLoading}
           setResults={setResults}
           results={results}
         />
