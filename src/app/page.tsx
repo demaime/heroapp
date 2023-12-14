@@ -10,11 +10,12 @@ export default function Home() {
   return (
     <>
       <header className="w-full text-center p-4">SUPER HERO APP</header>
-      <main className="flex min-h-screen flex-col items-center justify-between p-2">
+      <main className="flex flex-col items-center justify-between p-2">
         <SearchBar
           accessToken={accessToken}
           setIsLoading={setIsLoading}
           setResults={setResults}
+          results={results}
         />
       </main>
     </>
