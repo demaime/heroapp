@@ -58,10 +58,19 @@ export default function SearchBar({
           ) : (
             results.map((hero) => (
               <li
-                className="border-x border-b p-1 hover:bg-blue-200"
+                className="border-x border-b py-1 flex px-4 justify-between hover:bg-blue-200"
                 key={hero.id}
               >
-                {hero.name}
+                <span>{hero.name}</span>
+                <span
+                  className={
+                    hero.biography.alignment === "good"
+                      ? "text-green-500 text-2xl"
+                      : "text-red-500 text-2xl"
+                  }
+                >
+                  •
+                </span>
               </li>
             ))
           )
