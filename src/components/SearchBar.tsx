@@ -64,16 +64,20 @@ export default function SearchBar({
   // console.log(ulResultsRef.current);
 
   //TAMPOCO ANDA ESTA GARCHA.
+  // BUENO CAPAZ QUE ANDA Y NO LA ENTIENDO
+  //NO, NO ANDA
 
-  // function debounce(callback, delay) {
-  //   let timeoutId;
+  function debounce(callback: () => void, delay: number) {
+    let timeoutId;
 
-  //   return function () {
-  //     clearTimeout(timeoutId);
-  //     timeoutId = setTimeout(callback, delay);
-  //   };
-  // }
+    return function () {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(callback, delay);
+    };
+  }
 
+  // debounce(() => console.log("hola"), 1000);
+  // debounce(() => console.log("hola"), 1000);
   return (
     <>
       <div className="flex w-11/12 justify-between items-center border-r-4 border rounded-xl py-1 pl-4 pr-2 ">
@@ -85,7 +89,7 @@ export default function SearchBar({
             (e) =>
               // debounce(
               setInputHeroEntry(e.target.value)
-            // , 2000)
+            // , 5000)
           }
         />
       </div>
