@@ -20,6 +20,9 @@ export default function SearchBar({
 }: SearchBarProps) {
   const [inputHeroEntry, setInputHeroEntry] = useState<string | null>(null);
 
+  const ulResultsRef = useRef<HTMLUListElement>(null);
+  const [ulResultsVisibility, setUlResultsVisibility] = useState(false);
+
   useEffect(() => {
     async function searchHeroes() {
       const apiHeroes = `https://superheroapi.com/api.php/${accessToken}/search/${inputHeroEntry}`;
@@ -33,28 +36,30 @@ export default function SearchBar({
         setResults([]);
       }
     }
+    setUlResultsVisibility(true);
     searchHeroes();
   }, [accessToken, inputHeroEntry, setIsLoading, setResults]);
 
-  //TODA ESTA LOGICA PORONGA NO ME FUNCIONA
-
-  // const ulResultsRef = useRef<HTMLUListElement>(null);
-  // const [ulResultsVisibility, setUlResultsVisibility] = useState(false);
-  // useEffect(() => {
-  //   const closeUlResultsList = (event: MouseEvent) => {
-  //     if (!ulResultsVisibility) return;
-  //     if (
-  //       ulResultsRef.current &&
-  //       !ulResultsRef.current.contains(event.target)
-  //     ) {
-  //       setUlResultsVisibility(false);
-  //     }
-  //   };
-  //   window.addEventListener("click", closeUlResultsList);
-  //   return () => {
-  //     window.removeEventListener("click", closeUlResultsList);
-  //   };
-  // }, [ulResultsVisibility]);
+  //TODA ESTA LOGICA PORONGA NO ME FUNCIONA.
+  // BUENO AHORA FUNCIONA PERO NO SE SI ES OPTIMO
+  useEffect(() => {
+    const closeUlResultsList = (event: MouseEvent) => {
+      if (!ulResultsVisibility) return;
+      setUlResultsVisibility(false);
+      // if (
+      if (event.target?.classList.contains("heroResult"))
+        //   ulResultsRef.current &&
+        //   !ulResultsRef.current.contains(event.target)
+        // ) {
+        setUlResultsVisibility(true);
+      // }
+      console.log(event.target);
+    };
+    document.addEventListener("click", closeUlResultsList);
+    return () => {
+      document.removeEventListener("click", closeUlResultsList);
+    };
+  }, [ulResultsVisibility]);
 
   // console.log(ulResultsRef.current);
 
@@ -76,40 +81,43 @@ export default function SearchBar({
           type="text"
           placeholder="Type some character to search for a hero"
           className="w-full outline-none"
-          // onChange={(e) => debounce(setInputHeroEntry(e.target.value), 2000)}
+          onChange={
+            (e) =>
+              // debounce(
+              setInputHeroEntry(e.target.value)
+            // , 2000)
+          }
         />
       </div>
-
-      <ul
-        className="w-10/12 max-h-60 overflow-auto"
-        // ref={ulResultsRef}
-      >
-        {isLoading ? (
-          <TbLoaderQuarter className="animate-spin p-1" />
-        ) : results ? (
-          results.length < 1 ? (
-            <li className="italic p-1 text-xs text-gray-700">No results</li>
-          ) : (
-            results.map((hero) => (
-              <li
-                className="border-x border-b py-1 flex px-4 justify-between hover:bg-blue-200"
-                key={hero.id}
-              >
-                <span>{hero.name}</span>
-                <span
-                  className={
-                    hero.biography.alignment === "good"
-                      ? "text-green-500 text-2xl"
-                      : "text-red-500 text-2xl"
-                  }
+      {ulResultsVisibility && (
+        <ul className="w-10/12 max-h-60 overflow-auto" ref={ulResultsRef}>
+          {isLoading ? (
+            <TbLoaderQuarter className="animate-spin p-1" />
+          ) : results ? (
+            results.length < 1 ? (
+              <li className="italic p-1 text-xs text-gray-700">No results</li>
+            ) : (
+              results.map((hero) => (
+                <li
+                  className="heroResult border-x border-b py-1 flex px-4 justify-between hover:bg-blue-200"
+                  key={hero.id}
                 >
-                  •
-                </span>
-              </li>
-            ))
-          )
-        ) : null}
-      </ul>
+                  <span>{hero.name}</span>
+                  <span
+                    className={
+                      hero.biography.alignment === "good"
+                        ? "text-green-500 text-2xl"
+                        : "text-red-500 text-2xl"
+                    }
+                  >
+                    •
+                  </span>
+                </li>
+              ))
+            )
+          ) : null}
+        </ul>
+      )}
     </>
   );
 }
