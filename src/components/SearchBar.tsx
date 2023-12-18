@@ -1,7 +1,6 @@
-// "use client";
+"use client";
 import axios from "axios";
-// import Image from "next/image";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { TbLoaderQuarter } from "react-icons/tb";
 
 interface SearchBarProps {
@@ -9,7 +8,7 @@ interface SearchBarProps {
   setIsLoading: (isLoading: boolean) => void;
   isLoading: boolean;
   setResults: (results: []) => void;
-  results: any[]; //soluciona el error para que no joda, pero no corresponde
+  results: any[];
 }
 
 export default function SearchBar({
@@ -20,7 +19,6 @@ export default function SearchBar({
   results,
 }: SearchBarProps) {
   const [inputHeroEntry, setInputHeroEntry] = useState<string | null>(null);
-  // const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     async function searchHeroes() {
@@ -37,7 +35,28 @@ export default function SearchBar({
     }
     searchHeroes();
   }, [accessToken, inputHeroEntry, setIsLoading, setResults]);
-  // console.log(results);
+
+  //TODA ESTA LOGICA PORONGA NO ME FUNCIONA
+
+  // const ulResultsRef = useRef<HTMLUListElement>(null);
+  // const [ulResultsVisibility, setUlResultsVisibility] = useState(false);
+  // useEffect(() => {
+  //   const closeUlResultsList = (event: MouseEvent) => {
+  //     if (!ulResultsVisibility) return;
+  //     if (
+  //       ulResultsRef.current &&
+  //       !ulResultsRef.current.contains(event.target)
+  //     ) {
+  //       setUlResultsVisibility(false);
+  //     }
+  //   };
+  //   window.addEventListener("click", closeUlResultsList);
+  //   return () => {
+  //     window.removeEventListener("click", closeUlResultsList);
+  //   };
+  // }, [ulResultsVisibility]);
+
+  // console.log(ulResultsRef.current);
 
   return (
     <>
@@ -49,7 +68,11 @@ export default function SearchBar({
           onChange={(e) => setInputHeroEntry(e.target.value)}
         />
       </div>
-      <ul className="w-10/12 max-h-60 overflow-auto">
+
+      <ul
+        className="w-10/12 max-h-60 overflow-auto"
+        // ref={ulResultsRef}
+      >
         {isLoading ? (
           <TbLoaderQuarter className="animate-spin p-1" />
         ) : results ? (
