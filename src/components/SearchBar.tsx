@@ -58,6 +58,17 @@ export default function SearchBar({
 
   // console.log(ulResultsRef.current);
 
+  //TAMPOCO ANDA ESTA GARCHA.
+
+  // function debounce(callback, delay) {
+  //   let timeoutId;
+
+  //   return function () {
+  //     clearTimeout(timeoutId);
+  //     timeoutId = setTimeout(callback, delay);
+  //   };
+  // }
+
   return (
     <>
       <div className="flex w-11/12 justify-between items-center border-r-4 border rounded-xl py-1 pl-4 pr-2 ">
@@ -65,7 +76,7 @@ export default function SearchBar({
           type="text"
           placeholder="Type some character to search for a hero"
           className="w-full outline-none"
-          onChange={(e) => setInputHeroEntry(e.target.value)}
+          // onChange={(e) => debounce(setInputHeroEntry(e.target.value), 2000)}
         />
       </div>
 
