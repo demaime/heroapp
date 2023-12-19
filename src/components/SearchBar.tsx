@@ -79,9 +79,9 @@ export default function SearchBar({
       />
 
       {ulResultsVisibility && (
-        <ul className="w-10/12 max-h-60 overflow-auto border-2">
+        <ul className="resultsList w-10/12 max-h-60 overflow-auto border-b">
           {isLoading ? (
-            <TbLoaderQuarter className="animate-spin p-1" />
+            <TbLoaderQuarter className="animate-spin p-1 text-4xl" />
           ) : results ? (
             results.length < 1 ? (
               <li className="heroResult italic p-1 text-xs text-gray-300">
