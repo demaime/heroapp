@@ -18,103 +18,90 @@ export default function SearchBar({
   setResults,
   results,
 }: SearchBarProps) {
-  const [inputHeroEntry, setInputHeroEntry] = useState<string | null>(null);
-
-  const ulResultsRef = useRef<HTMLUListElement>(null);
   const [ulResultsVisibility, setUlResultsVisibility] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
 
-  useEffect(() => {
-    async function searchHeroes() {
-      const apiHeroes = `https://superheroapi.com/api.php/${accessToken}/search/${inputHeroEntry}`;
+  // define la funcion para buscar heroes. setea la visibilidad de la lista de resultados
+  async function searchHeroes() {
+    const apiHeroes = `https://superheroapi.com/api.php/${accessToken}/search/${inputRef.current?.value}`;
 
-      setIsLoading(true);
-      let res = await axios.get(apiHeroes);
-      setIsLoading(false);
-      if (res.data.results) {
-        setResults(res.data.results);
-      } else {
-        setResults([]);
-      }
-    }
     setUlResultsVisibility(true);
-    searchHeroes();
-  }, [accessToken, inputHeroEntry, setIsLoading, setResults]);
+    setIsLoading(true);
+    let res = await axios.get(apiHeroes);
+    setIsLoading(false);
+    if (res.data.results) {
+      setResults(res.data.results);
+    } else {
+      setResults([]);
+    }
+  }
 
-  //TODA ESTA LOGICA PORONGA NO ME FUNCIONA.
-  // BUENO AHORA FUNCIONA PERO NO SE SI ES OPTIMO
+  //  efecto para cerrar la lista de resultados cuando se clickea fuera del <li>, <input> o <span>. Ver si se puede optimizar
   useEffect(() => {
     const closeUlResultsList = (event: MouseEvent) => {
       if (!ulResultsVisibility) return;
       setUlResultsVisibility(false);
-      // if (
+
       if (event.target?.classList.contains("heroResult"))
-        //   ulResultsRef.current &&
-        //   !ulResultsRef.current.contains(event.target)
-        // ) {
         setUlResultsVisibility(true);
-      // }
-      console.log(event.target);
     };
     document.addEventListener("click", closeUlResultsList);
+    inputRef.current?.addEventListener("focus", () =>
+      setUlResultsVisibility(true)
+    );
     return () => {
       document.removeEventListener("click", closeUlResultsList);
     };
   }, [ulResultsVisibility]);
 
-  // console.log(ulResultsRef.current);
+  // console.log(inputRef.current);
 
-  //TAMPOCO ANDA ESTA GARCHA.
-  // BUENO CAPAZ QUE ANDA Y NO LA ENTIENDO
-  //NO, NO ANDA
+  // function debounce(callback: () => void, delay: number) {
+  //   let timeoutId;
 
-  function debounce(callback: () => void, delay: number) {
-    let timeoutId;
-
-    return function () {
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(callback, delay);
-    };
-  }
+  //   return function () {
+  //     clearTimeout(timeoutId);
+  //     timeoutId = setTimeout(callback, delay);
+  //   };
+  // }
 
   // debounce(() => console.log("hola"), 1000);
   // debounce(() => console.log("hola"), 1000);
+
   return (
     <>
-      <div className="flex w-11/12 justify-between items-center border-r-4 border rounded-xl py-1 pl-4 pr-2 ">
-        <input
-          type="text"
-          placeholder="Type some character to search for a hero"
-          className="w-full outline-none"
-          onChange={
-            (e) =>
-              // debounce(
-              setInputHeroEntry(e.target.value)
-            // , 5000)
-          }
-        />
-      </div>
+      <input
+        type="text"
+        placeholder="Type some character to search..."
+        className="heroResult w-11/12 outline-none border-r-4 border rounded-xl py-2 px-4 pr-2 bg-blue-100 text-gray-900"
+        ref={inputRef}
+        onChange={() => searchHeroes()}
+      />
+
       {ulResultsVisibility && (
-        <ul className="w-10/12 max-h-60 overflow-auto" ref={ulResultsRef}>
+        <ul className="w-10/12 max-h-60 overflow-auto border-2">
           {isLoading ? (
             <TbLoaderQuarter className="animate-spin p-1" />
           ) : results ? (
             results.length < 1 ? (
-              <li className="italic p-1 text-xs text-gray-700">No results</li>
+              <li className="heroResult italic p-1 text-xs text-gray-300">
+                No results
+              </li>
             ) : (
               results.map((hero) => (
                 <li
-                  className="heroResult border-x border-b py-1 flex px-4 justify-between hover:bg-blue-200"
+                  className="heroResult border-x border-b py-1 flex px-4 justify-between hover:bg-blue-200 hover:text-gray-900"
                   key={hero.id}
                 >
-                  <span>{hero.name}</span>
+                  <span className="heroResult">{hero.name}</span>
                   <span
                     className={
                       hero.biography.alignment === "good"
-                        ? "text-green-500 text-2xl"
-                        : "text-red-500 text-2xl"
+                        ? "heroResult text-green-500 text-2xl"
+                        : "heroResult text-red-500 text-2xl"
                     }
                   >
-                    •
+                    ◆
                   </span>
                 </li>
               ))
