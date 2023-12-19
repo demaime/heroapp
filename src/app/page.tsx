@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Image from "next/image";
 import SearchBar from "@/components/SearchBar";
 
 export default function Home() {
@@ -9,7 +10,13 @@ export default function Home() {
 
   return (
     <div className="min-h-screen  bg-gray-900">
-      <header className="w-full flex justify-center p-4">
+      <header className="w-full flex justify-center items-center p-4">
+        <Image
+          src={"/assets/logo.png"}
+          alt={"AppLogo"}
+          width={30}
+          height={30}
+        ></Image>
         <svg
           width="129pt"
           height="17pt"
