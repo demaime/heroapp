@@ -68,7 +68,6 @@ export default function SearchBar({
 
   // debounce(() => console.log("hola"), 1000);
   // debounce(() => console.log("hola"), 1000);
-
   return (
     <>
       <input
@@ -88,7 +87,7 @@ export default function SearchBar({
           }
         >
           {isLoading && (
-            <li className="heroResult text-center p-2">
+            <li className="heroResult w-11/12 flex justify-center p-4">
               <TbLoaderQuarter className="animate-spin text-4xl" />
             </li>
           )}
