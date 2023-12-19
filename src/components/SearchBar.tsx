@@ -80,34 +80,45 @@ export default function SearchBar({
       />
 
       {ulResultsVisibility && (
-        <ul className="resultsList w-10/12 max-h-60 overflow-auto border-b">
-          {isLoading ? (
-            <TbLoaderQuarter className="animate-spin p-1 text-4xl" />
-          ) : results ? (
-            results.length < 1 ? (
-              <li className="heroResult italic p-1 text-xs text-gray-300">
-                No results
-              </li>
-            ) : (
-              results.map((hero) => (
-                <li
-                  className="heroResult border-x border-b py-1 flex px-4 justify-between hover:bg-blue-200 hover:text-gray-900"
-                  key={hero.id}
-                >
-                  <span className="heroResult">{hero.name}</span>
-                  <span
-                    className={
-                      hero.biography.alignment === "good"
-                        ? "heroResult text-green-500 text-2xl"
-                        : "heroResult text-red-500 text-2xl"
-                    }
-                  >
-                    ◆
-                  </span>
+        <ul
+          className={
+            isLoading
+              ? "resultsList w-10/12 max-h-60 overflow-auto"
+              : "resultsList w-10/12 max-h-60 overflow-auto border-b  "
+          }
+        >
+          {isLoading && (
+            <li className="heroResult text-center p-2">
+              <TbLoaderQuarter className="animate-spin text-4xl" />
+            </li>
+          )}
+
+          {!isLoading &&
+            (results ? (
+              results.length < 1 ? (
+                <li className="heroResult italic p-1 text-xs text-gray-300">
+                  No results
                 </li>
-              ))
-            )
-          ) : null}
+              ) : (
+                results.map((hero) => (
+                  <li
+                    className="heroResult border-x border-b py-1 flex px-4 justify-between hover:bg-blue-200 hover:text-gray-900"
+                    key={hero.id}
+                  >
+                    <span className="heroResult">{hero.name}</span>
+                    <span
+                      className={
+                        hero.biography.alignment === "good"
+                          ? "heroResult text-green-500 text-2xl"
+                          : "heroResult text-red-500 text-2xl"
+                      }
+                    >
+                      ◆
+                    </span>
+                  </li>
+                ))
+              )
+            ) : null)}
         </ul>
       )}
     </>
