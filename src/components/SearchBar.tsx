@@ -1,5 +1,6 @@
 // @ts-nocheck
 "use client";
+import { Hero } from "@/types/hero-type";
 import axios from "axios";
 import React, { useEffect, useState, useRef } from "react";
 import { TbLoaderQuarter } from "react-icons/tb";
@@ -10,6 +11,8 @@ interface SearchBarProps {
   isLoading: boolean;
   setResults: (results: []) => void;
   results: any[];
+  chosenHero: Hero;
+  setChosenHero: (chosenHero: Hero) => void;
 }
 
 export default function SearchBar({
@@ -18,6 +21,8 @@ export default function SearchBar({
   isLoading,
   setResults,
   results,
+  chosenHero,
+  setChosenHero,
 }: SearchBarProps) {
   const [ulResultsVisibility, setUlResultsVisibility] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -68,6 +73,7 @@ export default function SearchBar({
 
   // debounce(() => console.log("hola"), 1000);
   // debounce(() => console.log("hola"), 1000);
+
   return (
     <>
       <input
@@ -83,12 +89,12 @@ export default function SearchBar({
           className={
             isLoading
               ? "resultsList w-10/12 max-h-60 overflow-auto"
-              : "resultsList w-10/12 max-h-60 overflow-auto border-b  "
+              : "resultsList w-10/12 max-h-60 overflow-auto border-b bg-gray-800 fixed top-28"
           }
         >
           {isLoading && (
-            <li className="heroResult w-11/12 flex justify-center p-4">
-              <TbLoaderQuarter className="animate-spin text-4xl" />
+            <li className="heroResult fixed top-28 flex justify-center w-10/12">
+              <TbLoaderQuarter className="animate-spin text-4xl p-1 " />
             </li>
           )}
 
@@ -101,15 +107,16 @@ export default function SearchBar({
               ) : (
                 results.map((hero) => (
                   <li
-                    className="heroResult border-x border-b py-1 flex px-4 justify-between hover:bg-blue-200 hover:text-gray-900"
+                    className=" border-x border-b py-1 flex px-4 justify-between hover:bg-blue-200 hover:text-gray-900 cursor-pointer"
                     key={hero.id}
+                    onClick={() => setChosenHero(hero)}
                   >
-                    <span className="heroResult">{hero.name}</span>
+                    <span>{hero.name}</span>
                     <span
                       className={
                         hero.biography.alignment === "good"
-                          ? "heroResult text-green-500 text-2xl"
-                          : "heroResult text-red-500 text-2xl"
+                          ? " text-green-500 text-2xl"
+                          : " text-red-500 text-2xl"
                       }
                     >
                       ◆

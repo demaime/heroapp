@@ -2,12 +2,15 @@
 import { useState } from "react";
 import Image from "next/image";
 import SearchBar from "@/components/SearchBar";
+import { Hero } from "@/types/hero-type";
 
 export default function Home() {
   const accessToken = 6728050277235129;
   const [isLoading, setIsLoading] = useState(false);
   const [results, setResults] = useState([]);
+  const [chosenHero, setChosenHero] = useState<Hero>();
 
+  console.log(chosenHero);
   return (
     <div className="min-h-screen  bg-gray-900">
       <header className="w-full flex justify-center items-center p-4">
@@ -45,7 +48,12 @@ export default function Home() {
           isLoading={isLoading}
           setResults={setResults}
           results={results}
+          chosenHero={chosenHero}
+          setChosenHero={setChosenHero}
         />
+        <div className="mt-8 w-48 h-72 border rounded border-[#bfdbfe] flex items-center justify-center text-xs text-center">
+          {!chosenHero ? "Select a hero" : chosenHero.name}
+        </div>
       </main>
     </div>
   );
