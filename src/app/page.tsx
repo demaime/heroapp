@@ -4,8 +4,9 @@ import { useState } from "react";
 import Image from "next/image";
 import SearchBar from "@/components/SearchBar";
 import { Hero } from "@/types/hero-type";
-
+import { Fade } from "react-awesome-reveal";
 import FireEffectSVG from "@/components/FireEffectSVG";
+import ResultCard from "@/components/ResultCard";
 
 export default function Home() {
   const accessToken = 6728050277235129;
@@ -54,22 +55,91 @@ export default function Home() {
           chosenHero={chosenHero}
           setChosenHero={setChosenHero}
         />
-        <div className="mt-8 w-48 h-72 border-2 rounded border-[#bfdbfe] shadow-2xl shadow-gray-100 z-20">
-          <div className="h-4/5 border-b-2 border-[#bfdbfe] relative">
-            {chosenHero && (
-              <Image
-                alt="Hero image not found"
-                src={chosenHero.image.url}
-                fill={true}
-              />
-            )}
+        <Fade>
+          <div className="w-full flex justify-center relative">
+            <ResultCard chosenHero={chosenHero} />
+            <div className="absolute h-auto bottom-0">
+              <FireEffectSVG alignment={chosenHero?.biography.alignment} />
+            </div>
           </div>
-          <div className="h-1/5 flex items-center justify-center text-xs text-center bg-gray-900 opacity-90 ">
-            {!chosenHero ? "Select a hero" : chosenHero.name}
-          </div>
-        </div>
-        <FireEffectSVG alignment={chosenHero?.biography.alignment} />
+        </Fade>
+        {chosenHero && (
+          <>
+            <Fade className="w-11/12 border-[#bfdbfe] border-b-2 border-x-2 rounded h-16 ">
+              {chosenHero.biography.alignment === "good" ? (
+                <div className="w-full h-full flex items-end justify-center pb-1 text-2xl text-green-500">
+                  GOOD
+                </div>
+              ) : (
+                <div className="w-full h-full flex items-end justify-center pb-1 text-2xl text-red-500">
+                  EVIL
+                </div>
+              )}
+            </Fade>
+
+            <Fade className="w-10/12 border-[#bfdbfe] border-b-2 border-x-2 rounded h-32 ">
+              <div className="w-full h-full flex flex-col justify-evenly">
+                <div className="flex w-full justify-evenly">
+                  {" "}
+                  <Image
+                    src={"/assets/powerstats/combat.png"}
+                    alt={"AppLogo"}
+                    width={25}
+                    height={25}
+                  ></Image>
+                  <Image
+                    src={"/assets/powerstats/durability.png"}
+                    alt={"AppLogo"}
+                    width={25}
+                    height={25}
+                  ></Image>
+                  <Image
+                    src={"/assets/powerstats/intelligence.png"}
+                    alt={"AppLogo"}
+                    width={25}
+                    height={25}
+                  ></Image>
+                  <Image
+                    src={"/assets/powerstats/power.png"}
+                    alt={"AppLogo"}
+                    width={25}
+                    height={25}
+                  ></Image>
+                  <Image
+                    src={"/assets/powerstats/speed.png"}
+                    alt={"AppLogo"}
+                    width={25}
+                    height={25}
+                  ></Image>
+                  <Image
+                    src={"/assets/powerstats/strengh.png"}
+                    alt={"AppLogo"}
+                    width={25}
+                    height={25}
+                  ></Image>
+                </div>
+                <div className="flex w-full justify-evenly">
+                  {" "}
+                  <div>{chosenHero.powerstats.combat}</div>
+                  <div>{chosenHero.powerstats.durability}</div>
+                  <div>{chosenHero.powerstats.intelligence}</div>
+                  <div>{chosenHero.powerstats.power}</div>
+                  <div>{chosenHero.powerstats.speed}</div>
+                  <div>{chosenHero.powerstats.strength}</div>
+                </div>
+              </div>
+            </Fade>
+          </>
+        )}
       </main>
     </div>
   );
 }
+
+// powerstats: {
+//   combat: string;
+//   durability: string;
+//   intelligence: string;
+//   power: string;
+//   speed: string;
+//   strength: string;

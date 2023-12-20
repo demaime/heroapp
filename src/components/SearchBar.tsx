@@ -101,7 +101,7 @@ export default function SearchBar({
           {!isLoading &&
             (results ? (
               results.length < 1 ? (
-                <li className="heroResult italic p-1 text-xs text-gray-300">
+                <li className="heroResult italic p-1 text-xs text-gray-300 bg-gray-900">
                   No results
                 </li>
               ) : (
