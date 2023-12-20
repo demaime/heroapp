@@ -79,7 +79,7 @@ export default function SearchBar({
       <input
         type="text"
         placeholder="Type some character to search..."
-        className="heroResult w-11/12 outline-none border-r-4 border rounded-xl py-2 px-4 pr-2 bg-blue-100 text-gray-900"
+        className="heroResult w-11/12 outline-none border-r-4 border rounded-xl py-2 px-4 pr-2 bg-blue-100 text-gray-900 z-50"
         ref={inputRef}
         onChange={() => searchHeroes()}
       />
@@ -88,8 +88,8 @@ export default function SearchBar({
         <ul
           className={
             isLoading
-              ? "resultsList w-10/12 max-h-60 overflow-auto"
-              : "resultsList w-10/12 max-h-60 overflow-auto border-b bg-gray-800 fixed top-28"
+              ? "resultsList w-10/12 max-h-60 overflow-auto z-50"
+              : "resultsList w-10/12 max-h-60 overflow-auto border-b bg-gray-800 fixed top-28 z-50"
           }
         >
           {isLoading && (

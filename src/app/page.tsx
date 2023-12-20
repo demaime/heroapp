@@ -5,6 +5,8 @@ import Image from "next/image";
 import SearchBar from "@/components/SearchBar";
 import { Hero } from "@/types/hero-type";
 
+import FireEffectSVG from "@/components/FireEffectSVG";
+
 export default function Home() {
   const accessToken = 6728050277235129;
   const [isLoading, setIsLoading] = useState(false);
@@ -52,9 +54,21 @@ export default function Home() {
           chosenHero={chosenHero}
           setChosenHero={setChosenHero}
         />
-        <div className="mt-8 w-48 h-72 border rounded border-[#bfdbfe] flex items-center justify-center text-xs text-center">
-          {!chosenHero ? "Select a hero" : chosenHero.name}
+        <div className="mt-8 w-48 h-72 border-2 rounded border-[#bfdbfe] shadow-2xl shadow-gray-100 ">
+          <div className="h-4/5 border-b-2 border-[#bfdbfe] relative">
+            {chosenHero && (
+              <Image
+                alt="Hero image not found"
+                src={chosenHero.image.url}
+                fill={true}
+              />
+            )}
+          </div>
+          <div className="h-1/5 flex items-center justify-center text-xs text-center bg-gray-900 opacity-90">
+            {!chosenHero ? "Select a hero" : chosenHero.name}
+          </div>
         </div>
+        <FireEffectSVG alignment={chosenHero?.biography.alignment} />
       </main>
     </div>
   );
