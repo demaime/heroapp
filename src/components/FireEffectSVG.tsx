@@ -1,4 +1,4 @@
-export default function FireEffectSVG({ alignment }) {
+export default function FireEffectSVG({ alignment }: any) {
   return (
     <div className="mo-fire">
       <svg
