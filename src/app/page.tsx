@@ -54,7 +54,7 @@ export default function Home() {
           chosenHero={chosenHero}
           setChosenHero={setChosenHero}
         />
-        <div className="mt-8 w-48 h-72 border-2 rounded border-[#bfdbfe] shadow-2xl shadow-gray-100 ">
+        <div className="mt-8 w-48 h-72 border-2 rounded border-[#bfdbfe] shadow-2xl shadow-gray-100 z-20">
           <div className="h-4/5 border-b-2 border-[#bfdbfe] relative">
             {chosenHero && (
               <Image
@@ -64,7 +64,7 @@ export default function Home() {
               />
             )}
           </div>
-          <div className="h-1/5 flex items-center justify-center text-xs text-center bg-gray-900 opacity-90">
+          <div className="h-1/5 flex items-center justify-center text-xs text-center bg-gray-900 opacity-90 ">
             {!chosenHero ? "Select a hero" : chosenHero.name}
           </div>
         </div>
