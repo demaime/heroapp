@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 #full-container {
-  height: 100dvh;
+  min-height: 100dvh;
 }
 
 .resultsList::-webkit-scrollbar-track {
@@ -24,22 +24,25 @@
 }
 
 .mo-fire {
-  position: relative;
+  position: absolute;
+  width: 100%;
+  bottom: -12 px;
+  height: auto;
   z-index: 1;
 }
-
+/* 
 #svg-view {
   width: 252px;
   height: 125px;
   left: 0px;
-}
+} */
 
 .mo-fire svg {
   width: 100%;
-  /* height: auto; */
+  height: auto;
   position: fixed;
   left: 0;
-  bottom: 18%;
+  /* bottom: 50%; */
   z-index: 1;
 }
 .flame {

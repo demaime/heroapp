@@ -56,17 +56,19 @@ export default function Home() {
           chosenHero={chosenHero}
           setChosenHero={setChosenHero}
         />
-        <Fade>
+        <Fade className="w-full">
           <div className="w-full flex justify-center relative">
             <ResultCard chosenHero={chosenHero} />
-            <div className="absolute bottom-0">
-              <FireEffectSVG alignment={chosenHero?.biography.alignment} />
-            </div>
+
+            <FireEffectSVG alignment={chosenHero?.biography.alignment} />
           </div>
         </Fade>
         {chosenHero && (
           <>
-            <Fade className="w-11/12 border-[#bfdbfe] border-b-2 border-x-2 rounded h-16 ">
+            <Fade
+              className="w-11/12 border-[#bfdbfe] border-2 border-x-2 rounded"
+              style={{ marginTop: "-1px" }}
+            >
               {chosenHero.biography.alignment === "good" ? (
                 <div className="w-full h-full flex items-end justify-center pb-1 text-2xl text-green-500">
                   GOOD
@@ -78,7 +80,7 @@ export default function Home() {
               )}
             </Fade>
 
-            <Fade className="w-10/12 border-[#bfdbfe] border-b-2 border-x-2 rounded h-32 ">
+            <Fade className="w-10/12 border-[#bfdbfe] border-b-2 border-x-2 rounded h-28 ">
               <PowerStats chosenHero={chosenHero} />
             </Fade>
           </>
