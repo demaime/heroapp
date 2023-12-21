@@ -90,7 +90,7 @@ export default function PowerStats({ chosenHero }: PowerStatsProps) {
       </div>
       <div className="w-full flex items-center justify-center mt-4">
         {" "}
-        <button className="p-1 text-xs font-bold  w-36  rounded-lg border bg-green-600  ">
+        <button className="p-1 text-xs font-bold  w-36 rounded-lg border bg-green-600  ">
           ADD TO TEAM
         </button>
       </div>
