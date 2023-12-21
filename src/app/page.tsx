@@ -65,22 +65,19 @@ export default function Home() {
         </Fade>
         {chosenHero && (
           <>
-            <Fade
-              className="w-11/12 border-[#bfdbfe] border-2 border-x-2 rounded"
-              style={{ marginTop: "-1px" }}
-            >
+            <Fade className="w-11/12  rounded" style={{ marginTop: "-1px" }}>
               {chosenHero.biography.alignment === "good" ? (
-                <div className="w-full h-full flex items-end justify-center pb-1 text-2xl text-green-500">
+                <div className="alignment-shadow w-full h-full flex items-end justify-center pb-1 text-2xl text-green-500">
                   GOOD
                 </div>
               ) : (
-                <div className="w-full h-full flex items-end justify-center pb-1 text-2xl text-red-500">
+                <div className="alignment-shadow w-full h-full flex items-end justify-center pb-1 text-2xl text-red-500">
                   EVIL
                 </div>
               )}
             </Fade>
 
-            <Fade className="w-10/12 border-[#bfdbfe] border-b-2 border-x-2 rounded h-28 ">
+            <Fade className="w-10/12 stats-shadow rounded h-28 ">
               <PowerStats chosenHero={chosenHero} />
             </Fade>
           </>

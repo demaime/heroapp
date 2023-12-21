@@ -6,6 +6,14 @@
   min-height: 100dvh;
 }
 
+.alignment-shadow {
+  box-shadow: 0 3px 3px 2px #bfdbfe;
+}
+
+.stats-shadow {
+  box-shadow: 0 3px 3px 2px #bfdbfe;
+}
+
 .resultsList::-webkit-scrollbar-track {
   border: 1px solid #000;
   padding: 2px 0;
