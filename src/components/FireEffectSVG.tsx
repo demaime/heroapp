@@ -11,7 +11,7 @@ export default function FireEffectSVG({ alignment }: any) {
         width="1016px"
         height="493px"
         viewBox="0 0 1016 493"
-        enable-background="new 0 0 1016 493"
+        enableBackground="new 0 0 1016 493"
         xmlSpace="preserve"
       >
         <g>
