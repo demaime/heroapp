@@ -77,7 +77,7 @@ export default function Home() {
               )}
             </Fade>
 
-            <Fade className="w-10/12 stats-shadow rounded h-28 ">
+            <Fade className="w-10/12 stats-shadow rounded h-24">
               <PowerStats chosenHero={chosenHero} />
             </Fade>
           </>
