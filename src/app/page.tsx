@@ -65,7 +65,7 @@ export default function Home() {
         </Fade>
         {chosenHero && (
           <>
-            <Fade className="w-11/12  rounded" style={{ marginTop: "-1px" }}>
+            <Fade className="w-11/12 rounded" style={{ marginTop: "2px" }}>
               {chosenHero.biography.alignment === "good" ? (
                 <div className="alignment-shadow w-full h-full flex items-end justify-center pb-1 text-2xl text-green-500">
                   GOOD
