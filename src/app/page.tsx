@@ -17,7 +17,7 @@ export default function Home() {
 
   console.log(chosenHero);
   return (
-    <div className="h-dvh bg-gray-900">
+    <div id="full-container" className="bg-gray-900">
       <header className="w-full flex justify-center items-center p-4">
         <Image
           src={"/assets/logo.png"}
