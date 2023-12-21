@@ -32,10 +32,10 @@
 
 .mo-fire svg {
   width: 100%;
-  height: auto;
+  /* height: auto; */
   position: fixed;
   left: 0;
-  bottom: 40%;
+  bottom: 8%;
   z-index: 1;
 }
 .flame {

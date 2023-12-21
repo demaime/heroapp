@@ -59,7 +59,7 @@ export default function Home() {
         <Fade>
           <div className="w-full flex justify-center relative">
             <ResultCard chosenHero={chosenHero} />
-            <div className="absolute h-auto bottom-0">
+            <div className="absolute bottom-0">
               <FireEffectSVG alignment={chosenHero?.biography.alignment} />
             </div>
           </div>
