@@ -6,7 +6,6 @@ type PowerStatsProps = {
   chosenHero: Hero;
 };
 export default function PowerStats({ chosenHero }: PowerStatsProps) {
-  console.log(chosenHero.powerstats);
   return (
     <>
       <div className="w-full h-full flex flex-col justify-evenly">
@@ -87,12 +86,6 @@ export default function PowerStats({ chosenHero }: PowerStatsProps) {
               : chosenHero.powerstats.strength}
           </div>
         </div>
-      </div>
-      <div className="w-full flex items-center justify-center mt-4">
-        {" "}
-        <button className="p-1 text-xs font-bold h-12 w-36 rounded-lg border bg-green-500  ">
-          ADD TO TEAM
-        </button>
       </div>
     </>
   );

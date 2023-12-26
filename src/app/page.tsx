@@ -14,8 +14,37 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [results, setResults] = useState([]);
   const [chosenHero, setChosenHero] = useState<Hero>();
+  const [myTeam, setMyTeam] = useState<Hero[] | []>([]);
 
-  console.log(chosenHero);
+  const addHeroToMyTeam = (newHero) => {
+    const heroeExistente = myTeam.find((heroe) => heroe.id === newHero.id);
+
+    if (!heroeExistente) {
+      if (myTeam.length < 6) {
+        const goodHeros = myTeam.filter(
+          (hero) => hero.biography.alignment === "good"
+        );
+        const evilHeros = myTeam.filter(
+          (hero) => hero.biography.alignment === "bad"
+        );
+
+        if (
+          (newHero.biography.alignment === "good" && goodHeros.length < 3) ||
+          (newHero.biography.alignment === "bad" && evilHeros.length < 3)
+        ) {
+          setMyTeam([...myTeam, newHero]);
+        } else {
+          console.log("No se puede agregar más héroes de esta alineación");
+        }
+      } else {
+        console.log("El equipo ya está completo");
+      }
+    } else {
+      console.log("El héroe ya está en el equipo");
+    }
+  };
+
+  console.log(myTeam);
   return (
     <div id="full-container" className="bg-gray-900">
       <header className="w-full flex justify-center items-center p-4">
@@ -77,9 +106,27 @@ export default function Home() {
               )}
             </Fade>
 
-            <Fade className="w-10/12 stats-shadow rounded h-24">
+            <div className="w-10/12 stats-shadow rounded h-24  ">
               <PowerStats chosenHero={chosenHero} />
-            </Fade>
+            </div>
+            <div className="w-full flex items-center justify-center mt-4">
+              {myTeam.some((hero) => hero.name === chosenHero.name) ? (
+                <button
+                  disabled
+                  onClick={() => addHeroToMyTeam(chosenHero)}
+                  className="p-1 text-xs font-bold h-12 w-36 rounded-lg border bg-gray-500  "
+                >
+                  ALREDY IN TEAM
+                </button>
+              ) : (
+                <button
+                  onClick={() => addHeroToMyTeam(chosenHero)}
+                  className="p-1 text-xs font-bold h-12 w-36 rounded-lg border bg-green-500  "
+                >
+                  ADD TO TEAM
+                </button>
+              )}
+            </div>
           </>
         )}
       </main>
