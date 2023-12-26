@@ -75,7 +75,7 @@ export default function Home() {
           </g>
         </svg>
       </header>
-      <main className="flex flex-col items-center justify-between p-2 text-white ">
+      <main className="flex flex-col items-center justify-between 2 text-white ">
         <SearchBar
           accessToken={accessToken}
           setIsLoading={setIsLoading}
@@ -94,7 +94,7 @@ export default function Home() {
         </Fade>
         {chosenHero && (
           <>
-            <Fade className="w-11/12 rounded" style={{ marginTop: "2px" }}>
+            <div className="w-11/12 rounded" style={{ marginTop: "2px" }}>
               {chosenHero.biography.alignment === "good" ? (
                 <div className="alignment-shadow w-full h-full flex items-end justify-center pb-1 text-2xl text-green-500">
                   GOOD
@@ -104,11 +104,8 @@ export default function Home() {
                   EVIL
                 </div>
               )}
-            </Fade>
-
-            <div className="w-10/12 stats-shadow rounded h-24  ">
-              <PowerStats chosenHero={chosenHero} />
             </div>
+            <PowerStats chosenHero={chosenHero} />
             <div className="w-full flex items-center justify-center mt-4">
               {myTeam.some((hero) => hero.name === chosenHero.name) ? (
                 <button
@@ -126,6 +123,9 @@ export default function Home() {
                   ADD TO TEAM
                 </button>
               )}
+            </div>
+            <div className="w-full h-12 text-center bg-blue-300 absolute bottom-0">
+              MY TEAM
             </div>
           </>
         )}

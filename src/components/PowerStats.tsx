@@ -7,7 +7,7 @@ type PowerStatsProps = {
 };
 export default function PowerStats({ chosenHero }: PowerStatsProps) {
   return (
-    <>
+    <div className="w-10/12 stats-shadow rounded h-24  ">
       <div className="w-full h-full flex flex-col justify-evenly">
         <div className="flex w-full justify-around">
           {" "}
@@ -87,6 +87,6 @@ export default function PowerStats({ chosenHero }: PowerStatsProps) {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
