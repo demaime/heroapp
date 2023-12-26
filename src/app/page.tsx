@@ -126,19 +126,19 @@ export default function Home() {
             </div>
           </>
         )}
-        <div className="w-full h-12 text-center bg-gray-700 absolute bottom-0 flex flex-col justify-around">
-          <div className="h-4 text-xs w-full flex justify-around items-center">
+        <div className="w-full h-20 text-center bg-gray-700 absolute bottom-0 flex flex-col justify-between text-gray-900">
+          <div className="h-8 text-xs w-full flex justify-around items-center">
             <div>▲</div>
-            <div>MY TEAM</div>
+            <div className="text-blue-200">MY TEAM</div>
             <div>▲</div>
           </div>
-          <div className="flex justify-evenly w-full">
-            <div className="rounded-full bg-gray-900 h-6 w-6"></div>
-            <div className="rounded-full bg-gray-900 h-6 w-6"></div>
-            <div className="rounded-full bg-gray-900 h-6 w-6"></div>
-            <div className="rounded-full bg-gray-900 h-6 w-6"></div>
-            <div className="rounded-full bg-gray-900 h-6 w-6"></div>
-            <div className="rounded-full bg-gray-900 h-6 w-6"></div>
+          <div className="flex justify-around w-full h-12 items-center">
+            <div className="rounded-full bg-gray-900 h-8 w-8"></div>
+            <div className="rounded-full bg-gray-900 h-8 w-8"></div>
+            <div className="rounded-full bg-gray-900 h-8 w-8"></div>
+            <div className="rounded-full bg-gray-900 h-8 w-8"></div>
+            <div className="rounded-full bg-gray-900 h-8 w-8"></div>
+            <div className="rounded-full bg-gray-900 h-8 w-8"></div>
           </div>
         </div>
       </main>
