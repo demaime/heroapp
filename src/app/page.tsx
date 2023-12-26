@@ -86,7 +86,7 @@ export default function Home() {
           setChosenHero={setChosenHero}
         />
         <Fade className="w-full">
-          <div className="w-full flex justify-center relative">
+          <div className="w-full flex justify-center relative mt-2">
             <ResultCard chosenHero={chosenHero} />
 
             <FireEffectSVG alignment={chosenHero?.biography.alignment} />
@@ -124,11 +124,23 @@ export default function Home() {
                 </button>
               )}
             </div>
-            <div className="w-full h-12 text-center bg-blue-300 absolute bottom-0">
-              MY TEAM
-            </div>
           </>
         )}
+        <div className="w-full h-12 text-center bg-gray-700 absolute bottom-0 flex flex-col justify-around">
+          <div className="h-4 text-xs w-full flex justify-around items-center">
+            <div>▲</div>
+            <div>MY TEAM</div>
+            <div>▲</div>
+          </div>
+          <div className="flex justify-evenly w-full">
+            <div className="rounded-full bg-gray-900 h-6 w-6"></div>
+            <div className="rounded-full bg-gray-900 h-6 w-6"></div>
+            <div className="rounded-full bg-gray-900 h-6 w-6"></div>
+            <div className="rounded-full bg-gray-900 h-6 w-6"></div>
+            <div className="rounded-full bg-gray-900 h-6 w-6"></div>
+            <div className="rounded-full bg-gray-900 h-6 w-6"></div>
+          </div>
+        </div>
       </main>
     </div>
   );
