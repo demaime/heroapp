@@ -8,6 +8,10 @@ import { Fade } from "react-awesome-reveal";
 import FireEffectSVG from "@/components/FireEffectSVG";
 import ResultCard from "@/components/ResultCard";
 import PowerStats from "@/components/PowerStats";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Tippy from "@tippyjs/react";
+import "tippy.js/dist/tippy.css";
 
 export default function Home() {
   const accessToken = 6728050277235129;
@@ -15,15 +19,16 @@ export default function Home() {
   const [results, setResults] = useState([]);
   const [chosenHero, setChosenHero] = useState<Hero>();
   const [myTeam, setMyTeam] = useState<Hero[] | []>([]);
-  const teamCirclesPreview = Array.from(
+
+  const teamSquaresPreview = Array.from(
     { length: 6 },
     (_, index) => myTeam[index] || null
   );
 
   const addHeroToMyTeam = (newHero) => {
-    const heroeExistente = myTeam.find((heroe) => heroe.id === newHero.id);
+    const existingHero = myTeam.find((heroe) => heroe.id === newHero.id);
 
-    if (!heroeExistente) {
+    if (!existingHero) {
       if (myTeam.length < 6) {
         const goodHeros = myTeam.filter(
           (hero) => hero.biography.alignment === "good"
@@ -38,17 +43,43 @@ export default function Home() {
         ) {
           setMyTeam([...myTeam, newHero]);
         } else {
-          console.log("No se puede agregar más héroes de esta alineación");
+          toast.error("No se puede agregar más héroes de esta alineación", {
+            position: "top-center",
+            autoClose: 700,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+          });
         }
       } else {
-        console.log("El equipo ya está completo");
+        toast.error("El equipo ya está completo", {
+          position: "top-center",
+          autoClose: 700,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
       }
     } else {
-      console.log("El héroe ya está en el equipo");
+      toast.error("El héroe ya está en el equipo", {
+        position: "top-center",
+        autoClose: 700,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
     }
   };
 
-  console.log(myTeam);
   return (
     <div id="full-container" className="bg-gray-900">
       <header className="w-full flex justify-center items-center p-4">
@@ -113,9 +144,8 @@ export default function Home() {
             <div className="w-full flex items-center justify-center mt-4">
               {myTeam.some((hero) => hero.name === chosenHero.name) ? (
                 <button
-                  disabled
                   onClick={() => addHeroToMyTeam(chosenHero)}
-                  className="p-1 text-xs font-bold h-12 w-36 rounded-lg border bg-gray-500  "
+                  className="p-1 text-xs font-bold h-12 w-36 rounded-lg border bg-gray-500 text-gray-300 "
                 >
                   ALREDY IN TEAM
                 </button>
@@ -130,31 +160,46 @@ export default function Home() {
             </div>
           </>
         )}
+        <ToastContainer
+          position="top-center"
+          autoClose={500}
+          hideProgressBar
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+        />
         <div className="w-full h-18 text-center bg-gray-700 absolute bottom-0 flex flex-col justify-between text-blue-200 rounded">
-          <div className="h-2 text-xs w-full flex justify-around items-center relative">
-            <div className="text-md border-x  absolute -top-4 rounded bg-gray-700 w-1/2">
+          <div className="w-full flex justify-around items-center relative">
+            <div className="text-md border-x  absolute -top-5 rounded bg-gray-700 w-1/2">
               MY TEAM
             </div>
           </div>
           <div className="flex justify-around w-full h-16 items-center">
             <div className="flex justify-evenly w-10/12">
-              {teamCirclesPreview.map((member, index) => (
+              {teamSquaresPreview.map((member, index) => (
                 <div key={index}>
                   {member ? (
-                    <Image
-                      className={
-                        member.biography.alignment === "good"
-                          ? "good-member-shadow w-full"
-                          : "evil-member-shadow w-full"
-                      }
-                      src={member.image.url}
-                      alt={"Hero"}
-                      height={40}
-                      width={32}
-                    />
-                  ) : (
-                    <div className="h-[42.5px] w-8 bg-gray-900 flex items-center justify-center">
+                    <Tippy content={member.name}>
                       <Image
+                        className={
+                          member.biography.alignment === "good"
+                            ? "good-member-shadow w-full rounded"
+                            : "evil-member-shadow w-full rounded"
+                        }
+                        src={member.image.url}
+                        alt={"Hero"}
+                        height={40}
+                        width={32}
+                      />
+                    </Tippy>
+                  ) : (
+                    <div className="h-[42.5px] w-8 bg-gray-900 flex items-center justify-center rounded">
+                      <Image
+                        className="opacity-50"
                         src={"/assets/unknown.png"}
                         alt={"Unkwown"}
                         height={30}
@@ -165,7 +210,7 @@ export default function Home() {
                 </div>
               ))}
             </div>
-            <div className="h-[42.5px] w-8  bg-gray-900 flex items-center justify-center">
+            <div className="h-[42.5px] w-12 bg-gray-900 flex items-center justify-center rounded">
               <Image
                 src={"/assets/expand.png"}
                 alt={"Unkwown"}
