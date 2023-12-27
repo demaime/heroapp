@@ -16,12 +16,10 @@
 
 .good-member-shadow {
   box-shadow: 0 0 5px 1px #68ff7c;
-  border: solid 1px white;
 }
 
 .evil-member-shadow {
-  box-shadow: 0 0 5px 1px #ff7f68;
-  border: solid 1px white;
+  box-shadow: 0 0 5px 1px #f8583c;
 }
 
 .resultsList::-webkit-scrollbar-track {
