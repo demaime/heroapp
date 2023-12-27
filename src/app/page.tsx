@@ -132,7 +132,7 @@ export default function Home() {
         )}
         <div className="w-full h-18 text-center bg-gray-700 absolute bottom-0 flex flex-col justify-between text-blue-200 rounded">
           <div className="h-2 text-xs w-full flex justify-around items-center relative">
-            <div className="text-sm absolute -top-4 rounded bg-gray-700 w-1/2">
+            <div className="text-md border-x  absolute -top-4 rounded bg-gray-700 w-1/2">
               MY TEAM
             </div>
           </div>
@@ -144,8 +144,8 @@ export default function Home() {
                     <Image
                       className={
                         member.biography.alignment === "good"
-                          ? "rounded-full good-member-shadow"
-                          : "rounded-full evil-member-shadow"
+                          ? "good-member-shadow w-full"
+                          : "evil-member-shadow w-full"
                       }
                       src={member.image.url}
                       alt={"Hero"}
@@ -153,7 +153,7 @@ export default function Home() {
                       width={32}
                     />
                   ) : (
-                    <div className="h-[42.5px] w-8 rounded-full bg-gray-900 flex items-center justify-center">
+                    <div className="h-[42.5px] w-8 bg-gray-900 flex items-center justify-center">
                       <Image
                         src={"/assets/unknown.png"}
                         alt={"Unkwown"}
