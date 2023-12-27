@@ -126,10 +126,12 @@ export default function Home() {
             </div>
           </>
         )}
-        <div className="w-full h-20 text-center bg-gray-700 absolute bottom-0 flex flex-col justify-between text-gray-900">
-          <div className="h-8 text-xs w-full flex justify-around items-center">
+        <div className="w-full h-20 text-center bg-gray-700 absolute bottom-0 flex flex-col justify-between text-blue-200">
+          <div className="h-8 text-xs w-full flex justify-around items-center relative">
             <div>▲</div>
-            <div className="text-blue-200">MY TEAM</div>
+            <div className="text-sm absolute -top-4 bg-gray-700 w-1/2">
+              MY TEAM
+            </div>
             <div>▲</div>
           </div>
           <div className="flex justify-around w-full h-12 items-center">
