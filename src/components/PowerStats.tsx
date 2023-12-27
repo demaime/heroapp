@@ -31,48 +31,6 @@ export default function PowerStats({ chosenHero }: PowerStatsProps) {
               />
             </Tippy>
           ))}
-          {/* <Image
-            className="text-center "
-            src={"/assets/powerstats/combat.png"}
-            alt={"AppLogo"}
-            width={20}
-            height={20}
-          ></Image>
-          <Image
-            className="text-center "
-            src={"/assets/powerstats/durability.png"}
-            alt={"AppLogo"}
-            width={20}
-            height={20}
-          ></Image>
-          <Image
-            className="text-center "
-            src={"/assets/powerstats/intelligence.png"}
-            alt={"AppLogo"}
-            width={20}
-            height={20}
-          ></Image>
-          <Image
-            className="text-center "
-            src={"/assets/powerstats/power.png"}
-            alt={"AppLogo"}
-            width={20}
-            height={20}
-          ></Image>
-          <Image
-            className="text-center "
-            src={"/assets/powerstats/speed.png"}
-            alt={"AppLogo"}
-            width={20}
-            height={20}
-          ></Image>
-          <Image
-            className="text-center "
-            src={"/assets/powerstats/strengh.png"}
-            alt={"AppLogo"}
-            width={20}
-            height={20}
-          ></Image> */}
         </div>
         <div className="flex w-full justify-evenly">
           <div className="text-center w-full">
