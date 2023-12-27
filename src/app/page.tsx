@@ -15,6 +15,10 @@ export default function Home() {
   const [results, setResults] = useState([]);
   const [chosenHero, setChosenHero] = useState<Hero>();
   const [myTeam, setMyTeam] = useState<Hero[] | []>([]);
+  const teamCirclesPreview = Array.from(
+    { length: 6 },
+    (_, index) => myTeam[index] || null
+  );
 
   const addHeroToMyTeam = (newHero) => {
     const heroeExistente = myTeam.find((heroe) => heroe.id === newHero.id);
@@ -126,21 +130,30 @@ export default function Home() {
             </div>
           </>
         )}
-        <div className="w-full h-20 text-center bg-gray-700 absolute bottom-0 flex flex-col justify-between text-blue-200">
-          <div className="h-8 text-xs w-full flex justify-around items-center relative">
-            <div>▲</div>
-            <div className="text-sm absolute -top-4 bg-gray-700 w-1/2">
+        <div className="w-full h-18 text-center bg-gray-700 absolute bottom-0 flex flex-col justify-between text-blue-200 rounded">
+          <div className="h-4 text-xs w-full flex justify-around items-center relative">
+            <div className="text-sm absolute -top-2 rounded bg-gray-700 w-1/2">
               MY TEAM
             </div>
-            <div>▲</div>
           </div>
           <div className="flex justify-around w-full h-12 items-center">
-            <div className="rounded-full bg-gray-900 h-8 w-8"></div>
-            <div className="rounded-full bg-gray-900 h-8 w-8"></div>
-            <div className="rounded-full bg-gray-900 h-8 w-8"></div>
-            <div className="rounded-full bg-gray-900 h-8 w-8"></div>
-            <div className="rounded-full bg-gray-900 h-8 w-8"></div>
-            <div className="rounded-full bg-gray-900 h-8 w-8"></div>
+            <div className="flex justify-evenly w-full">
+              {teamCirclesPreview.map((miembro, index) => (
+                <div key={index} className="circulo">
+                  {miembro ? (
+                    <Image
+                      className="rounded-full"
+                      src={miembro.image.url}
+                      alt={"Hero"}
+                      height={24}
+                      width={24}
+                    />
+                  ) : (
+                    <div className="h-6 w-6 rounded-full bg-gray-900"></div>
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </main>
