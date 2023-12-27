@@ -131,25 +131,29 @@ export default function Home() {
           </>
         )}
         <div className="w-full h-18 text-center bg-gray-700 absolute bottom-0 flex flex-col justify-between text-blue-200 rounded">
-          <div className="h-4 text-xs w-full flex justify-around items-center relative">
-            <div className="text-sm absolute -top-2 rounded bg-gray-700 w-1/2">
+          <div className="h-2 text-xs w-full flex justify-around items-center relative">
+            <div className="text-sm absolute -top-4 rounded bg-gray-700 w-1/2">
               MY TEAM
             </div>
           </div>
-          <div className="flex justify-around w-full h-12 items-center">
+          <div className="flex justify-around w-full h-16 items-center">
             <div className="flex justify-evenly w-full">
-              {teamCirclesPreview.map((miembro, index) => (
-                <div key={index} className="circulo">
-                  {miembro ? (
+              {teamCirclesPreview.map((member, index) => (
+                <div key={index}>
+                  {member ? (
                     <Image
-                      className="rounded-full"
-                      src={miembro.image.url}
+                      className={
+                        member.biography.alignment === "good"
+                          ? "rounded-full good-member-shadow"
+                          : "rounded-full evil-member-shadow"
+                      }
+                      src={member.image.url}
                       alt={"Hero"}
-                      height={24}
-                      width={24}
+                      height={40}
+                      width={32}
                     />
                   ) : (
-                    <div className="h-6 w-6 rounded-full bg-gray-900"></div>
+                    <div className="h-[42.5px] w-8 rounded-full bg-gray-900"></div>
                   )}
                 </div>
               ))}
