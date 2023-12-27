@@ -137,7 +137,7 @@ export default function Home() {
             </div>
           </div>
           <div className="flex justify-around w-full h-16 items-center">
-            <div className="flex justify-evenly w-full">
+            <div className="flex justify-evenly w-10/12">
               {teamCirclesPreview.map((member, index) => (
                 <div key={index}>
                   {member ? (
@@ -153,10 +153,25 @@ export default function Home() {
                       width={32}
                     />
                   ) : (
-                    <div className="h-[42.5px] w-8 rounded-full bg-gray-900"></div>
+                    <div className="h-[42.5px] w-8 rounded-full bg-gray-900 flex items-center justify-center">
+                      <Image
+                        src={"/assets/unknown.png"}
+                        alt={"Unkwown"}
+                        height={30}
+                        width={20}
+                      />
+                    </div>
                   )}
                 </div>
               ))}
+            </div>
+            <div className="h-[42.5px] w-8  bg-gray-900 flex items-center justify-center">
+              <Image
+                src={"/assets/expand.png"}
+                alt={"Unkwown"}
+                height={30}
+                width={20}
+              />
             </div>
           </div>
         </div>
