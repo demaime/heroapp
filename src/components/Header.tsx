@@ -4,14 +4,14 @@ import Tippy from "@tippyjs/react";
 
 const helpText = (
   <div>
-    <p>
+    <strong>
       SuperHeroApp es una aplicación para crear un equipo de superhéroes que
       consumirá una API externa y mostrará diferentes atributos a nivel
       individual de cada miembro y del equipo consolidado. Se deben tener en
       cuenta los siguientes requisitos:
-    </p>
-    <br />
+    </strong>
     <ul>
+      <br />
       <li>- El tamaño del equipo es de 6 heroes</li>
       <br />
       <li>
@@ -26,7 +26,7 @@ const helpText = (
       </li>
       <br />
       <li>
-        - Puedes ver los atributos promedio del equipo en la vista My team
+        - Puedes ver los atributos promedio del equipo en la vista My Team
       </li>
     </ul>
   </div>
