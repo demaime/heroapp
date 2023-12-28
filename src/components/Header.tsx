@@ -29,13 +29,6 @@ const helpText = (
         - Puedes ver los atributos promedio del equipo en la vista My team
       </li>
     </ul>
-    {/* /este cambia por el menu hamburguewsa */}
-    <Image
-      src={"/assets/question.png"}
-      alt={"Help"}
-      width={30}
-      height={30}
-    ></Image>
   </div>
 );
 
