@@ -26,7 +26,7 @@ const helpText = (
       </li>
       <br />
       <li>
-        - Puedes ver los atributos promedio del equipo en la vista "myTeam"
+        - Puedes ver los atributos promedio del equipo en la vista My team
       </li>
     </ul>
     {/* /este cambia por el menu hamburguewsa */}
