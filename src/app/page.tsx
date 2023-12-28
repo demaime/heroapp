@@ -139,14 +139,14 @@ export default function Home() {
           pauseOnHover
           theme="dark"
         />
-        <div className="w-full h-18 text-center bg-gray-700 absolute bottom-0 flex flex-col justify-between text-blue-200 rounded">
+        {/* <div className="w-full h-18 text-center bg-gray-700 absolute bottom-0 flex flex-col justify-between text-blue-200 rounded">
           <div className="w-full flex justify-around items-center relative">
             <div className="text-md border-x absolute -top-5 rounded bg-gray-700 w-1/2">
               MY TEAM
             </div>
           </div>
           <TeamPreviewBar myTeam={myTeam} />
-        </div>
+        </div> */}
       </main>
     </div>
   );
