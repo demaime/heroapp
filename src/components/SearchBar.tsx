@@ -94,7 +94,7 @@ export default function SearchBar({
         >
           {isLoading && (
             <li className="heroResult fixed top-28 flex justify-center w-10/12">
-              <TbLoaderQuarter className="animate-spin text-3xl p-1 " />
+              <TbLoaderQuarter className="animate-spin text-3xl mt-4 " />
             </li>
           )}
 
