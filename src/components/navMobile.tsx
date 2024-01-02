@@ -4,6 +4,7 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Squash as Hamburger } from "hamburger-react";
 import { routes } from "../components/Header";
+import Link from "next/link";
 
 export const NavMobile = () => {
   const [isOpen, setOpen] = useState(false);
@@ -40,13 +41,13 @@ export const NavMobile = () => {
                     key={route.title}
                     className="w-full p-[0.08rem] rounded-xl"
                   >
-                    <a
+                    <Link
                       onClick={() => setOpen((prev) => !prev)}
                       className={"flex items-center justify-between"}
                       href={route.href}
                     >
                       <span className="flex gap-1 text-lg">{route.title}</span>
-                    </a>
+                    </Link>
                   </motion.li>
                 );
               })}

@@ -37,15 +37,15 @@ const helpText = (
 export const routes = [
   {
     title: "Search",
-    href: "#",
+    href: "",
   },
   {
     title: "My Team",
-    href: "#",
+    href: "team",
   },
   {
     title: "About",
-    href: "#",
+    href: "about",
   },
 ];
 

@@ -77,7 +77,7 @@ export default function Home() {
 
   return (
     <div id="full-container" className="bg-gray-900">
-      <Header />
+      <Header />  
       <main className="flex flex-col items-center justify-between 2 text-white ">
         <SearchBar
           accessToken={accessToken}
