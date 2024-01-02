@@ -43,6 +43,10 @@ export const routes = [
     title: "My Team",
     href: "#",
   },
+  {
+    title: "About",
+    href: "#",
+  },
 ];
 
 export default function Header() {
