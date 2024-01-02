@@ -1,7 +1,7 @@
 export default function FireEffectSVG({ alignment }: any) {
   return (
     <svg
-      className="mo-fire"
+      className="mo-fire md:w-1/2"
       version="1.1"
       id="Layer_1"
       xmlns="http://www.w3.org/2000/svg"

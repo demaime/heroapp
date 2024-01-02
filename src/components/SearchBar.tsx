@@ -89,7 +89,7 @@ export default function SearchBar({
           className={
             isLoading
               ? "resultsList w-10/12 max-h-60 overflow-auto z-50"
-              : "resultsList w-10/12 max-h-60 overflow-auto border-b bg-gray-800 fixed top-28 z-50"
+              : "resultsList w-10/12 max-h-60 overflow-auto border-b bg-gray-800 fixed top-32  z-50"
           }
         >
           {isLoading && (
