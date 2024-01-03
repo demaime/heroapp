@@ -1,8 +1,6 @@
 // @ts-nocheck
 "use client";
 import { useState } from "react";
-
-import TeamPreviewBar from "@/components/TeamPreviewBar";
 import SearchBar from "@/components/SearchBar";
 import { Hero } from "@/types/hero-type";
 import { Fade } from "react-awesome-reveal";
@@ -87,7 +85,6 @@ export default function Home() {
           chosenHero={chosenHero}
           setChosenHero={setChosenHero}
         />
-
         <Fade className="w-full">
           <div className="w-full flex justify-center relative mt-2">
             <ResultCard chosenHero={chosenHero} />
@@ -139,14 +136,6 @@ export default function Home() {
           pauseOnHover
           theme="dark"
         />
-        {/* <div className="w-full h-18 text-center bg-gray-700 absolute bottom-0 flex flex-col justify-between text-blue-200 rounded">
-          <div className="w-full flex justify-around items-center relative">
-            <div className="text-md border-x absolute -top-5 rounded bg-gray-700 w-1/2">
-              MY TEAM
-            </div>
-          </div>
-          <TeamPreviewBar myTeam={myTeam} />
-        </div> */}
       </main>
     </div>
   );

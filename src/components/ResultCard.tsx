@@ -7,7 +7,6 @@ type ResultCardProps = {
 };
 
 export default function ResultCard({ chosenHero }: ResultCardProps) {
-  // console.log(chosenHero);
   return (
     <div className="mt-8 w-48 h-72 border-2 rounded z-20">
       <div className="h-4/5 border-b-2 border-[#bfdbfe] relative">

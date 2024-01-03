@@ -38,7 +38,7 @@ const helpText = (
 export const routes = [
   {
     title: "Search",
-    href: "",
+    href: "/",
   },
   {
     title: "My Team",
