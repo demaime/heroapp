@@ -12,3 +12,16 @@ SuperHeroApp es una aplicación para crear un equipo de superhéroes que consumi
 - No se pueden repetir integrantes
 - Puedes ver los atributos de los heroes buscandolos en este sitio
 - Puedes ver los atributos promedio del equipo en la vista "myTeam"
+
+---
+
+### en lugar de guardar los heros, guardar los id - reflejarlo en la url. y manejar la data desde ahi
+
+queryparams
+
+localhost:3000?team=111,222,333,444,555,666
+localhost:3000?team=222,333,444,555,666
+
+Pagina team seria
+
+localhost:3000/team?heroes=111,222,333,444,555,666
