@@ -1,7 +1,7 @@
 // @ts-nocheck
 "use client";
 import { useState } from "react";
-import Header from "@/components/Header";
+
 import TeamPreviewBar from "@/components/TeamPreviewBar";
 import SearchBar from "@/components/SearchBar";
 import { Hero } from "@/types/hero-type";
@@ -77,7 +77,6 @@ export default function Home() {
 
   return (
     <div id="full-container" className="bg-gray-900">
-      <Header />  
       <main className="flex flex-col items-center justify-between 2 text-white ">
         <SearchBar
           accessToken={accessToken}
@@ -88,6 +87,7 @@ export default function Home() {
           chosenHero={chosenHero}
           setChosenHero={setChosenHero}
         />
+
         <Fade className="w-full">
           <div className="w-full flex justify-center relative mt-2">
             <ResultCard chosenHero={chosenHero} />

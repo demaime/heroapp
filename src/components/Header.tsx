@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import Tippy from "@tippyjs/react";
@@ -51,7 +52,7 @@ export const routes = [
 
 export default function Header() {
   return (
-    <header className="w-full">
+    <header className="w-full bg-gray-900">
       <NavDesktop />
       <div className="w-full flex justify-between p-4">
         <div className="flex items-center justify-center">
