@@ -20,15 +20,11 @@ export default function Home() {
   const [chosenHero, setChosenHero] = useState<Hero>();
   const [myTeam, setMyTeam] = useState<Hero[] | []>([]);
 
-  const router = useRouter();
-  console.log(router.query);
-
   useEffect(() => {
     const teamIds = myTeam.map((member) => member.id);
-    //en caso de que funcione, habria que buscar la forma de que cuando vuelvo de otra  page a esta, no se reinicien los params
+    //en caso de que funcione, habria que buscar la forma de que cuando vuelvo de otra page a esta, no se reinicien los params
     const idsParam = teamIds.join(",");
     // Actualiza la URL con los teamIds
-
     Router.push(`?ids=${idsParam}`, undefined, { shallow: true });
   }, [myTeam]);
 

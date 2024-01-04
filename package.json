@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@emotion/react": "^11.11.1",
     "@tippyjs/react": "^4.2.6",
     "axios": "^1.6.2",
     "framer-motion": "^10.17.0",
