@@ -1,9 +1,14 @@
-"use client";
 import React from "react";
 import Image from "next/image";
 import Tippy from "@tippyjs/react";
 import { NavDesktop } from "./navDesktop";
 import { NavMobile } from "./navMobile";
+import { Hero } from "@/types/hero-type";
+import { NextRouter } from "next/router";
+
+interface HeaderProps {
+  routerQuery: NextRouter;
+}
 
 const helpText = (
   <div>
@@ -35,25 +40,26 @@ const helpText = (
   </div>
 );
 
-export const routes = [
-  {
-    title: "Search",
-    href: "/",
-  },
-  {
-    title: "My Team",
-    href: "team",
-  },
-  {
-    title: "About",
-    href: "about",
-  },
-];
+export default function Header({ routerQuery }: any) {
+  const routes = [
+    {
+      title: "Search",
+      href: `/?${routerQuery}`,
+    },
 
-export default function Header() {
+    {
+      title: "My Team",
+      href: `/team?${routerQuery}`,
+    },
+    {
+      title: "About",
+      href: `/about?${routerQuery}`,
+    },
+  ];
+
   return (
-    <header className="w-full bg-gray-900">
-      <NavDesktop />
+    <header className="w-full bg-gray-900 mb-2">
+      <NavDesktop routes={routes} />
       <div className="w-full flex justify-between p-4">
         <div className="flex items-center justify-center">
           <Tippy content={helpText}>
@@ -95,7 +101,7 @@ export default function Header() {
           </svg>
         </div>
         <div>
-          <NavMobile />
+          <NavMobile routes={routes} />
         </div>
       </div>
     </header>

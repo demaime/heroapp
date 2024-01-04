@@ -1,6 +1,7 @@
 // @ts-nocheck
-"use client";
-import { useState } from "react";
+
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import SearchBar from "@/components/SearchBar";
 import { Hero } from "@/types/hero-type";
 import { Fade } from "react-awesome-reveal";
@@ -8,6 +9,7 @@ import FireEffectSVG from "@/components/FireEffectSVG";
 import ResultCard from "@/components/ResultCard";
 import PowerStats from "@/components/PowerStats";
 import { ToastContainer, toast } from "react-toastify";
+import Header from "@/components/Header";
 import "react-toastify/dist/ReactToastify.css";
 import "tippy.js/dist/tippy.css";
 
@@ -17,6 +19,13 @@ export default function Home() {
   const [results, setResults] = useState([]);
   const [chosenHero, setChosenHero] = useState<Hero>();
   const [myTeam, setMyTeam] = useState<Hero[] | []>([]);
+  const teamIds = myTeam.map((member) => member.id);
+
+  const router = useRouter();
+  useEffect(() => {
+    const idsParam = teamIds.join(",");
+    router.push(`?ids=${idsParam}`);
+  }, [teamIds]);
 
   const addHeroToMyTeam = (newHero) => {
     const existingHero = myTeam.find((heroe) => heroe.id === newHero.id);
@@ -75,6 +84,7 @@ export default function Home() {
 
   return (
     <div id="full-container" className="bg-gray-900">
+      <Header query={router.query} />
       <main className="flex flex-col items-center justify-between 2 text-white ">
         <SearchBar
           accessToken={accessToken}

@@ -1,5 +1,5 @@
 // @ts-nocheck
-"use client";
+
 import { Hero } from "@/types/hero-type";
 import axios from "axios";
 import React, { useEffect, useState, useRef } from "react";
@@ -74,6 +74,20 @@ export default function SearchBar({
   // debounce(() => console.log("hola"), 1000);
   // debounce(() => console.log("hola"), 1000);
 
+  //funciones para evitar el scroll de la pagina cuando el input esta focus
+
+  const [inputFocus, setInputFocus] = useState(false);
+
+  const handleFocus = () => {
+    setInputFocus(true);
+    document.body.style.overflow = "hidden";
+  };
+
+  const handleBlur = () => {
+    setInputFocus(false);
+    document.body.style.overflow = "auto";
+  };
+
   return (
     <>
       <input
@@ -82,6 +96,8 @@ export default function SearchBar({
         className="heroResult w-11/12 outline-none border-r-4 border rounded-xl py-2 px-4 pr-2 bg-blue-100 text-gray-900 z-50"
         ref={inputRef}
         onChange={() => searchHeroes()}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
       />
 
       {ulResultsVisibility && (
@@ -89,12 +105,12 @@ export default function SearchBar({
           className={
             isLoading
               ? "resultsList w-10/12 max-h-60 overflow-auto z-50"
-              : "resultsList w-10/12 max-h-60 overflow-auto border-b bg-gray-800 fixed top-32  z-50"
+              : "resultsList w-10/12 max-h-60 overflow-auto border-b bg-gray-800 fixed top-[8.3rem] z-50"
           }
         >
           {isLoading && (
             <li className="heroResult fixed top-28 flex justify-center w-10/12">
-              <TbLoaderQuarter className="animate-spin text-3xl mt-4 " />
+              <TbLoaderQuarter className="animate-spin text-3xl mt-6 " />
             </li>
           )}
 

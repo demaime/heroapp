@@ -1,6 +1,8 @@
-import { routes } from "../components/Header";
+interface navProps {
+  routes: { title: string; href: string }[];
+}
 
-export const NavDesktop = () => {
+export const NavDesktop = ({ routes }: navProps) => {
   return (
     <ul className="hidden lg:flex lg:items-center gap-5 text-sm text-white w-full justify-evenly p-2 font-bold">
       {routes.map((route) => {

@@ -3,10 +3,14 @@ import { useRef } from "react";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Squash as Hamburger } from "hamburger-react";
-import { routes } from "../components/Header";
+
 import Link from "next/link";
 
-export const NavMobile = () => {
+interface navProps {
+  routes: { title: string; href: string }[];
+}
+
+export const NavMobile = ({ routes }: navProps) => {
   const [isOpen, setOpen] = useState(false);
   const ref = useRef(null);
 
@@ -26,8 +30,6 @@ export const NavMobile = () => {
           >
             <ul className="grid gap-2">
               {routes.map((route, idx) => {
-                const { title } = route;
-
                 return (
                   <motion.li
                     initial={{ scale: 0, opacity: 0 }}
