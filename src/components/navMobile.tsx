@@ -3,16 +3,30 @@ import { useRef } from "react";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Squash as Hamburger } from "hamburger-react";
-
 import Link from "next/link";
+import { useRouter } from "next/router";
 
-interface navProps {
-  routes: { title: string; href: string }[];
-}
+const routes = [
+  {
+    title: "Search",
+    href: `/`,
+  },
 
-export const NavMobile = ({ routes }: navProps) => {
+  {
+    title: "My Team",
+    href: `/team`,
+  },
+  {
+    title: "About",
+    href: `/about`,
+  },
+];
+
+export const NavMobile = () => {
   const [isOpen, setOpen] = useState(false);
   const ref = useRef(null);
+
+  const router = useRouter();
 
   useClickAway(ref, () => setOpen(false));
 
@@ -46,7 +60,10 @@ export const NavMobile = ({ routes }: navProps) => {
                     <Link
                       onClick={() => setOpen((prev) => !prev)}
                       className={"flex items-center justify-between"}
-                      href={route.href}
+                      href={{
+                        pathname: route.href, // Usa la ruta completa
+                        query: router.query, // Asegura que los parámetros de la URL se mantengan
+                      }}
                     >
                       <span className="flex gap-1 text-lg">{route.title}</span>
                     </Link>

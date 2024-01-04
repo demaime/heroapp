@@ -36,28 +36,9 @@ const helpText = (
 );
 
 export default function Header() {
-  const router = useRouter();
-  // console.log(router.query);
-
-  const routes = [
-    {
-      title: "Search",
-      href: `/?${router.query}`,
-    },
-
-    {
-      title: "My Team",
-      href: `/team?${router.query}`,
-    },
-    {
-      title: "About",
-      href: `/about?${router.query}`,
-    },
-  ];
-
   return (
     <header className="w-full bg-gray-900 mb-2">
-      <NavDesktop routes={routes} />
+      <NavDesktop />
       <div className="w-full flex justify-between p-4">
         <div className="flex items-center justify-center">
           <Tippy content={helpText}>
@@ -99,7 +80,7 @@ export default function Header() {
           </svg>
         </div>
         <div>
-          <NavMobile routes={routes} />
+          <NavMobile />
         </div>
       </div>
     </header>
