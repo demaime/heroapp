@@ -18,6 +18,8 @@ export default function Team() {
   useEffect(() => {
     const teamIds = router.query.ids?.toString().split(",") || [];
     async function getHeroesByID() {
+      setTeam([]);
+
       for (const id of teamIds) {
         const { data } = await axios.get<Hero>(
           `https://superheroapi.com/api.php/${accessToken}/${id}`
