@@ -25,3 +25,5 @@ localhost:3000?team=222,333,444,555,666
 Pagina team seria
 
 localhost:3000/team?heroes=111,222,333,444,555,666
+
+### EXISTE LA ALINEACION NEUTRAL, CUANDO PIJA ME IBA A ENTERAR

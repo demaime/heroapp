@@ -24,6 +24,7 @@ export default function Home() {
   const router = useRouter();
 
   useEffect(() => {
+    //en caso de que funcione, habria que buscar la forma de que cuando vuelvo de otra  page a esta, no se reinicien los params
     const idsParam = teamIds.join(",");
     // Actualiza la URL con los teamIds
     router.replace(`?ids=${idsParam}`, undefined, { shallow: true });
