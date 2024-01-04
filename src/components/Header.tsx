@@ -1,14 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
 import Tippy from "@tippyjs/react";
 import { NavDesktop } from "./navDesktop";
 import { NavMobile } from "./navMobile";
-import { Hero } from "@/types/hero-type";
-import { NextRouter } from "next/router";
-
-interface HeaderProps {
-  routerQuery: NextRouter;
-}
+import { useRouter } from "next/router";
 
 const helpText = (
   <div>
@@ -40,20 +35,23 @@ const helpText = (
   </div>
 );
 
-export default function Header({ routerQuery }: any) {
+export default function Header() {
+  const router = useRouter();
+  // console.log(router.query);
+
   const routes = [
     {
       title: "Search",
-      href: `/?${routerQuery}`,
+      href: `/?${router.query}`,
     },
 
     {
       title: "My Team",
-      href: `/team?${routerQuery}`,
+      href: `/team?${router.query}`,
     },
     {
       title: "About",
-      href: `/about?${routerQuery}`,
+      href: `/about?${router.query}`,
     },
   ];
 

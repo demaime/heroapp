@@ -22,9 +22,11 @@ export default function Home() {
   const teamIds = myTeam.map((member) => member.id);
 
   const router = useRouter();
+
   useEffect(() => {
     const idsParam = teamIds.join(",");
-    router.push(`?ids=${idsParam}`);
+    // Actualiza la URL con los teamIds
+    router.replace(`?ids=${idsParam}`, undefined, { shallow: true });
   }, [teamIds]);
 
   const addHeroToMyTeam = (newHero) => {
@@ -84,7 +86,7 @@ export default function Home() {
 
   return (
     <div id="full-container" className="bg-gray-900">
-      <Header query={router.query} />
+      <Header />
       <main className="flex flex-col items-center justify-between 2 text-white ">
         <SearchBar
           accessToken={accessToken}
