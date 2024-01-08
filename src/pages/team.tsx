@@ -3,6 +3,10 @@ import Header from "@/components/Header";
 import { useRouter } from "next/router";
 import axios from "axios";
 import { Hero } from "@/types/hero-type";
+import Image from "next/image";
+import { Fade } from "react-awesome-reveal";
+import TeamMembers from "@/components/TeamMembers";
+import TeamStats from "@/components/TeamStats";
 
 // * obtener ids de la url
 // * en el primer render, agarrar los ids y traer de la api de superhero cada uno
@@ -14,6 +18,7 @@ export default function Team() {
   const accessToken = 6728050277235129;
   const router = useRouter();
   const [team, setTeam] = useState<Hero[]>([]);
+  const [teamVisibility, setTeamVisibility] = useState(true);
 
   useEffect(() => {
     const teamIds = router.query.ids?.toString().split(",") || [];
@@ -36,11 +41,19 @@ export default function Team() {
   return (
     <div id="full-container" className="bg-gray-900">
       <Header />
-      <ul className="w-full h-11/12 flex flex-col items-center justify-evenly text-white">
-        {team.map((hero) => (
-          <li key={hero.name}>{hero.name}</li>
-        ))}
-      </ul>
+      <button
+        onClick={() => setTeamVisibility(!teamVisibility)}
+        className="w-full text-xl justify-center text-bold text-gray-300 mb-4 italic bg-gray-800 flex items-center pb-1"
+      >
+        {teamVisibility ? "View stats" : "View team composition"}
+      </button>
+      {teamVisibility ? (
+        <Fade cascade={true} duration={400} damping={0.3}>
+          <TeamMembers team={team} />
+        </Fade>
+      ) : (
+        <TeamStats team={team} />
+      )}
     </div>
   );
 }
