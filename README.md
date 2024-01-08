@@ -15,17 +15,8 @@ SuperHeroApp es una aplicación para crear un equipo de superhéroes que consumi
 
 ---
 
-### en lugar de guardar los heros, guardar los id - reflejarlo en la url. y manejar la data desde ahi
-
-queryparams
-
-localhost:3000?team=111,222,333,444,555,666
-localhost:3000?team=222,333,444,555,666
-
-Pagina team seria
-
-localhost:3000/team?heroes=111,222,333,444,555,666
-
 ### EXISTE LA ALINEACION NEUTRAL, CUANDO PIJA ME IBA A ENTERAR
 
 ### REIVSAR QUE ONBLUR SE CAGA CUANDO CLICKEO FUERA DEL BODY PERO EN EL CLIENTE (FUERA DE FOCUS EL INPUT)
+
+### PROMISE ALL para las llamadas a la api simultaneas (ver en team.tsx)

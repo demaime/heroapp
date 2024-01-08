@@ -6,7 +6,7 @@ import { Hero } from "@/types/hero-type";
 
 // * obtener ids de la url
 // * en el primer render, agarrar los ids y traer de la api de superhero cada uno
-//   * tiparlo o traer el tipo
+// * tiparlo o traer el tipo
 // * con el resultado, setear un estado con los heroes que obtuve
 // * en el jsx, mappear por los heroes que obtuve (estado) y mostrar los nombres
 
@@ -20,13 +20,15 @@ export default function Team() {
     async function getHeroesByID() {
       setTeam([]);
 
-      for (const id of teamIds) {
-        const { data } = await axios.get<Hero>(
+      const promises = teamIds.map((id) => {
+        return axios.get<Hero>(
           `https://superheroapi.com/api.php/${accessToken}/${id}`
         );
+      });
 
-        setTeam((prev) => [...prev, data]);
-      }
+      const results = await Promise.all(promises);
+
+      setTeam(results.map((res) => res.data));
     }
     getHeroesByID();
   }, [router.query.ids]);
