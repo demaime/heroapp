@@ -1,7 +1,7 @@
 // @ts-nocheck
 
 import { useEffect, useState } from "react";
-import Router, { useRouter } from "next/router";
+import Router from "next/router";
 import SearchBar from "@/components/SearchBar";
 import { Hero } from "@/types/hero-type";
 import { Fade } from "react-awesome-reveal";
@@ -19,11 +19,20 @@ export default function Home() {
   const [results, setResults] = useState([]);
   const [chosenHero, setChosenHero] = useState<Hero>();
   const [myTeam, setMyTeam] = useState<Hero[] | []>([]);
+  // const [teamIDS, setTeamIDS] = useState([]);
+
+  // const queryAnterior = Router.router?.query;
+
+  // console.log(Router.router?.query.ids);
 
   useEffect(() => {
+    // Router.router.query.ids
+    //   ? setTeamIDS(Router.router.query.ids?.toString().split(","))
+    //   : setTeamIDS([...teamIDS, myTeam.map((member) => member.id)]);
     const teamIds = myTeam.map((member) => member.id);
-    //en caso de que funcione, habria que buscar la forma de que cuando vuelvo de otra page a esta, no se reinicien los params
-    const idsParam = teamIds.join(",");
+    // buscar la forma de que cuando vuelvo de otra page a esta, no se reinicien los params
+    const idsParam =
+      teamIds.length > 0 ? teamIds.join(",") : Router.router.query.ids;
     // Actualiza la URL con los teamIds
     Router.push(`?ids=${idsParam}`, undefined, { shallow: true });
   }, [myTeam]);
