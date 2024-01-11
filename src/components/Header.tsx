@@ -3,7 +3,6 @@ import Image from "next/image";
 import Tippy from "@tippyjs/react";
 import { NavDesktop } from "./navDesktop";
 import { NavMobile } from "./navMobile";
-import { useRouter } from "next/router";
 
 const helpText = (
   <div>
@@ -18,8 +17,8 @@ const helpText = (
       <li>- El tamaño del equipo es de 6 heroes</li>
       <br />
       <li>
-        - No se puede tener mas de 3 heroes de alienacion good, ni mas de 3
-        heroes de alineacion evil
+        - No se puede tener mas de 3 heroes con la misma alineación, ya sea
+        <em> good</em>, <em>evil</em> o <em>neutral</em>
       </li>
       <br />
       <li>- No se pueden repetir integrantes</li>
@@ -41,7 +40,7 @@ export default function Header() {
       <NavDesktop />
       <div className="w-full flex justify-between p-4">
         <div className="flex items-center justify-center">
-          <Tippy content={helpText} className="z-50">
+          <Tippy content={helpText} zIndex={9999}>
             <Image
               className="opacity-50 hover:opacity-100"
               src={"/assets/question.png"}

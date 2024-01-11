@@ -16,9 +16,9 @@ export default function TeamMembers({ team }: TeamMembersProps) {
           className=" w-full flex items-center justify-center py-2"
         >
           <Tippy
+            zIndex={9999}
             allowHTML={true}
             trigger={"click"}
-            className="z-50"
             content={
               <>
                 <h1 className="text-blue-200 text-2xl">{hero.name}</h1>
@@ -37,39 +37,39 @@ export default function TeamMembers({ team }: TeamMembersProps) {
                   <li>
                     COMBAT:{" "}
                     <span className="text-blue-400">
-                      {hero.powerstats.combat}
+                      {hero.powerstats.combat || 0}
                     </span>
                   </li>
                   <li>
                     DURABILITY:{" "}
                     <span className="text-blue-400">
-                      {hero.powerstats.durability}
+                      {hero.powerstats.durability || 0}
                     </span>
                   </li>
                   <li>
                     INTELLIGENCE:{" "}
                     <span className="text-blue-400">
                       {" "}
-                      {hero.powerstats.intelligence}
+                      {hero.powerstats.intelligence || 0}
                     </span>
                   </li>
                   <li>
                     POWER:{" "}
                     <span className="text-blue-400">
                       {" "}
-                      {hero.powerstats.power}
+                      {hero.powerstats.power || 0}
                     </span>
                   </li>
                   <li>
                     SPEED:{" "}
                     <span className="text-blue-400">
-                      {hero.powerstats.speed}
+                      {hero.powerstats.speed || 0}
                     </span>
                   </li>
                   <li>
                     STRENGTH:{" "}
                     <span className="text-blue-400">
-                      {hero.powerstats.strength}
+                      {hero.powerstats.strength || 0}
                     </span>
                   </li>
                 </ul>
