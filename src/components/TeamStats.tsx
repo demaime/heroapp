@@ -83,7 +83,7 @@ export default function TeamStats({ team }: TeamStatsProps) {
                     {totals[stat]}
                   </td>
                   <td className="py-2 px-4 border-b text-center">
-                    {average[stat].toFixed(2)}{" "}
+                    {average[stat].toFixed(1)}
                   </td>
                 </tr>
               ))}
