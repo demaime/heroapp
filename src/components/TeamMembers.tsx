@@ -15,13 +15,12 @@ export default function TeamMembers({ team }: TeamMembersProps) {
           className=" w-full flex items-center justify-center py-2"
         >
           <Image
-            className="rounded-full shadow-lg shadow-gray-700"
+            className="rounded-lg shadow-lg shadow-gray-700"
             src={hero.image.url}
             alt="Hero Image"
             height={100}
             width={100}
           />
-          {/* <p>{hero.name}</p> */}
         </li>
       ))}
     </ul>

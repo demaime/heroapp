@@ -1,7 +1,10 @@
+// @ts-nocheck
+
 import { Hero } from "@/types/hero-type";
 import React from "react";
 import { Fade } from "react-awesome-reveal";
 import Image from "next/image";
+import Tippy from "@tippyjs/react";
 
 interface TeamStatsProps {
   team: Hero[];
@@ -17,9 +20,9 @@ export default function TeamStats({ team }: TeamStatsProps) {
     "strength",
   ];
 
-  function sumarTotales(superheroes: Hero[]) {
-    // Inicializa un objeto para almacenar los totales
-    const totales = {
+  function getTotalsAndAverage(superheroes: Hero[]) {
+    // Inicializa un objeto para almacenar los totales y sumas
+    const totals = {
       combat: 0,
       durability: 0,
       intelligence: 0,
@@ -30,27 +33,32 @@ export default function TeamStats({ team }: TeamStatsProps) {
 
     // Itera sobre cada superhéroe y suma los valores
     superheroes.forEach((heroe: Hero) => {
-      Object.keys(totales).forEach((propiedad: string) => {
+      Object.keys(totals).forEach((prop: string) => {
         // Convierte la cadena en un número, si es posible
-        const valor = parseInt(heroe[propiedad], 10) || 0;
+        const valor = parseInt(heroe.powerstats[prop], 10) || 0;
         // Suma el valor a la propiedad correspondiente
-        totales[propiedad] += valor;
+        totals[prop] += valor;
       });
     });
 
-    return totales;
+    // Calcula el promedio para cada propiedad
+    const average = Object.fromEntries(
+      Object.entries(totals).map(([prop, total]) => [
+        prop,
+        total / superheroes.length,
+      ])
+    );
+
+    return { totals: totals, average };
   }
 
-  // Llama a la función con tu array de superhéroes
-  const totales = sumarTotales(team);
-
-  console.log(totales);
+  const { totals: totals, average } = getTotalsAndAverage(team);
 
   return (
-    <div className="text-red-200">
+    <div className="text-blue-200">
       <Fade cascade={true} duration={400} damping={0.3}>
         <div>
-          <table className="min-w-full bg-white border border-gray-300">
+          <table className="min-w-full">
             <thead>
               <tr>
                 <th className="py-2 px-4 border-b"></th>
@@ -62,27 +70,26 @@ export default function TeamStats({ team }: TeamStatsProps) {
               {powerstatsTitles.map((stat, index) => (
                 <tr key={index}>
                   <td className="py-2 px-4 border-b">
-                    {" "}
-                    <Image
-                      src={`/assets/powerstats/${stat}.png`}
-                      alt={`${stat} powerstat`}
-                      width={60}
-                      height={60}
-                    />
+                    <Tippy key={stat} content={stat.toUpperCase()}>
+                      <Image
+                        src={`/assets/powerstats/${stat}.png`}
+                        alt={`${stat} powerstat`}
+                        width={60}
+                        height={60}
+                      />
+                    </Tippy>
                   </td>
                   <td className="py-2 px-4 border-b text-center">
-                    {/* {teamStats.map((hero) => hero[stat])} */}
+                    {totals[stat]}
                   </td>
-                  <td className="py-2 px-4 border-b">{`Fila ${
-                    index + 1
-                  }, Col 3`}</td>
+                  <td className="py-2 px-4 border-b text-center">
+                    {average[stat].toFixed(2)}{" "}
+                  </td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
-
-        {team.map((hero) => hero.name)}
       </Fade>
     </div>
   );
