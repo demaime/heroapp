@@ -18,9 +18,10 @@ export default function TeamMembers({ team }: TeamMembersProps) {
           <Tippy
             allowHTML={true}
             trigger={"click"}
+            className="z-50"
             content={
               <>
-                <h1 className="text-blue-200">{hero.name}</h1>
+                <h1 className="text-blue-200 text-2xl">{hero.name}</h1>
                 <p
                   className={
                     hero.biography.alignment === "good"
@@ -33,12 +34,44 @@ export default function TeamMembers({ team }: TeamMembersProps) {
                   {hero.biography.alignment.toUpperCase()}
                 </p>
                 <ul>
-                  <li>COMBAT: {hero.powerstats.combat}</li>
-                  <li>DURABILITY: {hero.powerstats.durability}</li>
-                  <li>INTELLIGENCE: {hero.powerstats.intelligence}</li>
-                  <li>POWER: {hero.powerstats.power}</li>
-                  <li>SPEED: {hero.powerstats.speed}</li>
-                  <li>STRENGTH: {hero.powerstats.strength}</li>
+                  <li>
+                    COMBAT:{" "}
+                    <span className="text-blue-400">
+                      {hero.powerstats.combat}
+                    </span>
+                  </li>
+                  <li>
+                    DURABILITY:{" "}
+                    <span className="text-blue-400">
+                      {hero.powerstats.durability}
+                    </span>
+                  </li>
+                  <li>
+                    INTELLIGENCE:{" "}
+                    <span className="text-blue-400">
+                      {" "}
+                      {hero.powerstats.intelligence}
+                    </span>
+                  </li>
+                  <li>
+                    POWER:{" "}
+                    <span className="text-blue-400">
+                      {" "}
+                      {hero.powerstats.power}
+                    </span>
+                  </li>
+                  <li>
+                    SPEED:{" "}
+                    <span className="text-blue-400">
+                      {hero.powerstats.speed}
+                    </span>
+                  </li>
+                  <li>
+                    STRENGTH:{" "}
+                    <span className="text-blue-400">
+                      {hero.powerstats.strength}
+                    </span>
+                  </li>
                 </ul>
               </>
             }
