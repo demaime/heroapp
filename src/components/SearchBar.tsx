@@ -132,7 +132,9 @@ export default function SearchBar({
                       className={
                         hero.biography.alignment === "good"
                           ? " text-green-500 text-2xl"
-                          : " text-red-500 text-2xl"
+                          : hero.biography.alignment === "bad"
+                          ? " text-red-500 text-2xl"
+                          : "text-gray-500 text-2xl"
                       }
                     >
                       ◆

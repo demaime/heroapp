@@ -48,10 +48,15 @@ export default function Home() {
         const evilHeros = myTeam.filter(
           (hero) => hero.biography.alignment === "bad"
         );
-
+        const neutralHeros = myTeam.filter(
+          (hero) =>
+            hero.biography.alignment != "good" &&
+            hero.biography.alignment != "bad"
+        );
         if (
           (newHero.biography.alignment === "good" && goodHeros.length < 3) ||
-          (newHero.biography.alignment === "bad" && evilHeros.length < 3)
+          (newHero.biography.alignment === "bad" && evilHeros.length < 3) ||
+          (newHero.biography.alignment === "neutral" && neutralHeros.length < 3)
         ) {
           setMyTeam([...myTeam, newHero]);
         } else {
@@ -118,9 +123,13 @@ export default function Home() {
                 <div className="alignment-shadow w-full h-full flex items-end justify-center pb-1 text-2xl text-green-500">
                   GOOD
                 </div>
-              ) : (
+              ) : chosenHero.biography.alignment === "bad" ? (
                 <div className="alignment-shadow w-full h-full flex items-end justify-center pb-1 text-2xl text-red-500">
                   EVIL
+                </div>
+              ) : (
+                <div className="alignment-shadow w-full h-full flex items-end justify-center pb-1 text-2xl text-blue-300">
+                  NEUTRAL
                 </div>
               )}
             </div>

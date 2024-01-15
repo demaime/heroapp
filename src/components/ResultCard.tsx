@@ -23,7 +23,7 @@ export default function ResultCard({ chosenHero }: ResultCardProps) {
               alt={"AppLogo"}
               width={60}
               height={60}
-            ></Image>
+            />
           </div>
         )}
       </div>
