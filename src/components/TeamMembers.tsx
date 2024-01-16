@@ -16,7 +16,7 @@ export default function TeamMembers({ team }: TeamMembersProps) {
           className=" w-full flex items-center justify-center py-2"
         >
           <Tippy
-            zIndex={9999}
+            zIndex={999}
             allowHTML={true}
             trigger={"click"}
             content={
@@ -24,56 +24,56 @@ export default function TeamMembers({ team }: TeamMembersProps) {
                 <h1 className="text-blue-200 text-2xl">{hero.name}</h1>
                 <p
                   className={
-                    hero.biography.alignment === "good"
+                    hero.biography?.alignment === "good"
                       ? "text-green-300"
-                      : hero.biography.alignment === "bad"
+                      : hero.biography?.alignment === "bad"
                       ? "text-red-300"
-                      : hero.biography.alignment === "neutral" ||
-                        hero.biography.alignment === "-"
+                      : hero.biography?.alignment === "neutral" ||
+                        hero.biography?.alignment === "-"
                       ? "text-blue-300"
                       : "text-gray-300"
                   }
                 >
-                  {hero.biography.alignment.toUpperCase()}
+                  {hero.biography?.alignment.toUpperCase()}
                 </p>
 
                 <ul>
                   <li>
                     COMBAT:{" "}
                     <span className="text-blue-400">
-                      {hero.powerstats.combat || 0}
+                      {hero.powerstats?.combat || 0}
                     </span>
                   </li>
                   <li>
                     DURABILITY:{" "}
                     <span className="text-blue-400">
-                      {hero.powerstats.durability || 0}
+                      {hero.powerstats?.durability || 0}
                     </span>
                   </li>
                   <li>
                     INTELLIGENCE:{" "}
                     <span className="text-blue-400">
                       {" "}
-                      {hero.powerstats.intelligence || 0}
+                      {hero.powerstats?.intelligence || 0}
                     </span>
                   </li>
                   <li>
                     POWER:{" "}
                     <span className="text-blue-400">
                       {" "}
-                      {hero.powerstats.power || 0}
+                      {hero.powerstats?.power || 0}
                     </span>
                   </li>
                   <li>
                     SPEED:{" "}
                     <span className="text-blue-400">
-                      {hero.powerstats.speed || 0}
+                      {hero.powerstats?.speed || 0}
                     </span>
                   </li>
                   <li>
                     STRENGTH:{" "}
                     <span className="text-blue-400">
-                      {hero.powerstats.strength || 0}
+                      {hero.powerstats?.strength || 0}
                     </span>
                   </li>
                 </ul>
@@ -82,7 +82,7 @@ export default function TeamMembers({ team }: TeamMembersProps) {
           >
             <Image
               className="rounded-lg shadow-lg shadow-gray-700"
-              src={hero.image.url}
+              src={hero.image?.url}
               alt="Hero Image"
               height={100}
               width={100}
