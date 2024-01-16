@@ -5,29 +5,57 @@ import Link from "next/link";
 
 export default function About() {
   return (
-    <div id="full-container" className="bg-gray-900 text-white">
+    <div id="full-container" className="bg-gray-900 text-white relative">
       <Header />
       <ul className="w-full flex flex-col items-center">
         <li>Aplicación basada en un challenge de Alkemy</li>
+        <li>NextJs (TypeScript - Tailwind)</li>
         <li className="w-100 flex justify-around mt-4">
-          <Image
-            src={"/assets/nextjs.png"}
-            alt="Hero Image"
-            height={100}
-            width={100}
-          />
-          <Image
-            src={"/assets/tailwind.png"}
-            alt="Hero Image"
-            height={100}
-            width={100}
-          />
+          <Link href={"https://axios-http.com/es/"}>axios</Link>
+        </li>
+        <li className="w-100 flex justify-around mt-4">
+          <Link href={"https://hamburger-react.netlify.app"}>
+            hamburguer-react
+          </Link>
+        </li>
+        <li className="w-100 flex justify-around mt-4">
+          <Link href={"https://github.com/atomiks/tippyjs-react"}>tippy</Link>
+        </li>
+        <li className="w-100 flex justify-around mt-4">
+          <Link href={"https://react-awesome-reveal.morello.dev"}>
+            react-awesome-reveal
+          </Link>
+        </li>
+        <li className="w-100 flex justify-around mt-4">
+          <Link href={"https://react-icons.github.io/react-icons/"}>
+            react-icons
+          </Link>
+        </li>
+        <li className="w-100 flex justify-around mt-4">
+          <Link href={"https://github.com/fkhadra/react-toastify#readme"}>
+            react-toastify
+          </Link>
         </li>
       </ul>
-      <li>
-        <p>Librerias</p>
-        <Link href={"https://github.com/atomiks/tippyjs-react"}>Tippy</Link>
-      </li>
+      <footer className="w-full flex justify-evenly absolute bottom-2">
+        <p className="text-gray-500">Developed by</p>
+        <div className="flex items-center justify-evenly">
+          <Image
+            className="mx-2"
+            src="/assets/github.png"
+            alt="github"
+            width={25}
+            height={25}
+          />
+          <Image
+            className="mx-2"
+            src="/assets/linkedin.png"
+            alt="linkedin"
+            width={25}
+            height={25}
+          />
+        </div>
+      </footer>
     </div>
   );
 }
