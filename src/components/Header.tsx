@@ -40,7 +40,7 @@ export default function Header() {
       <NavDesktop />
       <div className="w-full flex justify-between p-4">
         <div className="flex items-center justify-center">
-          <Tippy content={helpText} zIndex={9999}>
+          <Tippy content={helpText} zIndex={99999}>
             <Image
               className="opacity-50 hover:opacity-100"
               src={"/assets/question.png"}

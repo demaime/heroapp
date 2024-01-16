@@ -7,8 +7,14 @@ export default function About() {
   return (
     <div id="full-container" className="bg-gray-900 text-white relative">
       <Header />
+
       <ul className="w-full flex flex-col items-center">
-        <li>Aplicación basada en un challenge de Alkemy</li>
+        <li className="w-100 flex justify-around mt-4">
+          <Link href={"https://www.alkemy.org/"}>
+            Aplicación basada en un challenge de Alkemy
+          </Link>
+        </li>
+
         <li>NextJs (TypeScript - Tailwind)</li>
         <li className="w-100 flex justify-around mt-4">
           <Link href={"https://axios-http.com/es/"}>axios</Link>
