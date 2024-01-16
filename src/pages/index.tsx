@@ -42,21 +42,35 @@ export default function Home() {
 
     if (!existingHero) {
       if (myTeam.length < 6) {
-        const goodHeros = myTeam.filter(
+        const goodHeroes = myTeam.filter(
           (hero) => hero.biography.alignment === "good"
         );
-        const evilHeros = myTeam.filter(
+        const evilHeroes = myTeam.filter(
           (hero) => hero.biography.alignment === "bad"
         );
-        const neutralHeros = myTeam.filter(
+        const neutralHeroes = myTeam.filter(
           (hero) =>
-            hero.biography.alignment != "good" &&
-            hero.biography.alignment != "bad"
+            hero.biography.alignment === "neutral" ||
+            hero.biography.alignment === "-"
         );
+
+        const alignmentLimit = (alignment) => {
+          const count = myTeam.filter(
+            (hero) =>
+              hero.biography.alignment === alignment ||
+              (alignment === "neutral" &&
+                (hero.biography.alignment === "neutral" ||
+                  hero.biography.alignment === "-"))
+          ).length;
+          return count < 3;
+        };
+
         if (
-          (newHero.biography.alignment === "good" && goodHeros.length < 3) ||
-          (newHero.biography.alignment === "bad" && evilHeros.length < 3) ||
-          (newHero.biography.alignment === "neutral" && neutralHeros.length < 3)
+          (newHero.biography.alignment === "good" && alignmentLimit("good")) ||
+          (newHero.biography.alignment === "bad" && alignmentLimit("bad")) ||
+          ((newHero.biography.alignment === "neutral" ||
+            newHero.biography.alignment === "-") &&
+            alignmentLimit("neutral"))
         ) {
           setMyTeam([...myTeam, newHero]);
         } else {

@@ -46,29 +46,3 @@ export default function PowerStats({ chosenHero }: PowerStatsProps) {
     </div>
   );
 }
-
-// <div className="text-center w-full">
-//   {chosenHero.powerstats.durability === "null"
-//     ? "0"
-//     : chosenHero.powerstats.durability}
-// </div>
-// <div className="text-center w-full">
-//   {chosenHero.powerstats.intelligence === "null"
-//     ? "0"
-//     : chosenHero.powerstats.intelligence}
-// </div>
-// <div className="text-center w-full">
-//   {chosenHero.powerstats.power === "null"
-//     ? "0"
-//     : chosenHero.powerstats.power}
-// </div>
-// <div className="text-center w-full">
-//   {chosenHero.powerstats.speed === "null"
-//     ? "0"
-//     : chosenHero.powerstats.speed}
-// </div>
-// <div className="text-center w-full">
-//   {chosenHero.powerstats.strength === "null"
-//     ? "0"
-//     : chosenHero.powerstats.strength}
-// </div>

@@ -26,13 +26,17 @@ export default function TeamMembers({ team }: TeamMembersProps) {
                   className={
                     hero.biography.alignment === "good"
                       ? "text-green-300"
-                      : "evil"
+                      : hero.biography.alignment === "bad"
                       ? "text-red-300"
+                      : hero.biography.alignment === "neutral" ||
+                        hero.biography.alignment === "-"
+                      ? "text-blue-300"
                       : "text-gray-300"
                   }
                 >
                   {hero.biography.alignment.toUpperCase()}
                 </p>
+
                 <ul>
                   <li>
                     COMBAT:{" "}
