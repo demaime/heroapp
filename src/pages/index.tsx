@@ -19,16 +19,8 @@ export default function Home() {
   const [results, setResults] = useState([]);
   const [chosenHero, setChosenHero] = useState<Hero>();
   const [myTeam, setMyTeam] = useState<Hero[] | []>([]);
-  // const [teamIDS, setTeamIDS] = useState([]);
-
-  // const queryAnterior = Router.router?.query;
-
-  // console.log(Router.router?.query.ids);
 
   useEffect(() => {
-    // Router.router.query.ids
-    //   ? setTeamIDS(Router.router.query.ids?.toString().split(","))
-    //   : setTeamIDS([...teamIDS, myTeam.map((member) => member.id)]);
     const teamIds = myTeam.map((member) => member.id);
     // buscar la forma de que cuando vuelvo de otra page a esta, no se reinicien los params
     const idsParam =

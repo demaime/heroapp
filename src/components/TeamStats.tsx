@@ -35,7 +35,8 @@ export default function TeamStats({ team }: TeamStatsProps) {
     superheroes.forEach((heroe: Hero) => {
       Object.keys(totals).forEach((prop: string) => {
         // Convierte la cadena en un número, si es posible
-        const valor = parseInt(heroe.powerstats[prop], 10) || 0;
+        const valor =
+          parseInt(heroe.powerstats && heroe.powerstats[prop], 10) || 0;
         // Suma el valor a la propiedad correspondiente
         totals[prop] += valor;
       });
