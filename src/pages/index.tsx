@@ -1,7 +1,7 @@
 // @ts-nocheck
 
 import { useEffect, useState } from "react";
-import axios from "axios";
+import useGetInitialTeamMembers from "@/hooks/useGetInitialTeamMembers";
 import Router, { useRouter } from "next/router";
 import SearchBar from "@/components/SearchBar";
 import { Hero } from "@/types/hero-type";
@@ -19,9 +19,8 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [results, setResults] = useState([]);
   const [chosenHero, setChosenHero] = useState<Hero>();
-  const [myTeam, setMyTeam] = useState<Hero[] | []>([]);
-  const [hasLoaded, setHasLoaded] = useState(false);
-  const router = useRouter();
+
+  const { hasLoaded, myTeam, setMyTeam } = useGetInitialTeamMembers();
 
   useEffect(() => {
     if (hasLoaded) {
@@ -32,29 +31,7 @@ export default function Home() {
       // Actualiza la URL con los teamIds
       Router.push(`?ids=${idsParam}`, undefined, { shallow: true });
     }
-  }, [myTeam, hasLoaded]);
-
-  useEffect(() => {
-    if (hasLoaded) {
-      return;
-    }
-    const teamIds = router.query.ids?.toString().split(",") || [];
-    async function getHeroesByID() {
-      setMyTeam([]);
-
-      const promises = teamIds.map((id) => {
-        return axios.get<Hero>(
-          `https://superheroapi.com/api.php/${accessToken}/${id}`
-        );
-      });
-
-      const results = await Promise.all(promises);
-      console.log(results);
-      setMyTeam(results.map((res) => res.data));
-      setHasLoaded(true);
-    }
-    getHeroesByID();
-  }, [hasLoaded, router.query.ids]);
+  }, [hasLoaded, myTeam]);
 
   const addHeroToMyTeam = (newHero) => {
     const existingHero = myTeam.find((heroe) => heroe.id === newHero.id);
