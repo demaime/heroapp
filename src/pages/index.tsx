@@ -1,7 +1,8 @@
 // @ts-nocheck
 
 import { useEffect, useState } from "react";
-import Router from "next/router";
+import axios from "axios";
+import Router, { useRouter } from "next/router";
 import SearchBar from "@/components/SearchBar";
 import { Hero } from "@/types/hero-type";
 import { Fade } from "react-awesome-reveal";
@@ -19,15 +20,41 @@ export default function Home() {
   const [results, setResults] = useState([]);
   const [chosenHero, setChosenHero] = useState<Hero>();
   const [myTeam, setMyTeam] = useState<Hero[] | []>([]);
+  const [hasLoaded, setHasLoaded] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
-    const teamIds = myTeam.map((member) => member.id);
-    // buscar la forma de que cuando vuelvo de otra page a esta, no se reinicien los params
-    const idsParam =
-      teamIds.length > 0 ? teamIds.join(",") : Router.router.query.ids;
-    // Actualiza la URL con los teamIds
-    Router.push(`?ids=${idsParam}`, undefined, { shallow: true });
-  }, [myTeam]);
+    if (hasLoaded) {
+      const teamIds = myTeam.map((member) => member.id);
+      if (teamIds.length === 0) return;
+      const idsParam =
+        teamIds.length > 0 ? teamIds.join(",") : Router.router.query.ids;
+      // Actualiza la URL con los teamIds
+      Router.push(`?ids=${idsParam}`, undefined, { shallow: true });
+    }
+  }, [myTeam, hasLoaded]);
+
+  useEffect(() => {
+    if (hasLoaded) {
+      return;
+    }
+    const teamIds = router.query.ids?.toString().split(",") || [];
+    async function getHeroesByID() {
+      setMyTeam([]);
+
+      const promises = teamIds.map((id) => {
+        return axios.get<Hero>(
+          `https://superheroapi.com/api.php/${accessToken}/${id}`
+        );
+      });
+
+      const results = await Promise.all(promises);
+      console.log(results);
+      setMyTeam(results.map((res) => res.data));
+      setHasLoaded(true);
+    }
+    getHeroesByID();
+  }, [hasLoaded, router.query.ids]);
 
   const addHeroToMyTeam = (newHero) => {
     const existingHero = myTeam.find((heroe) => heroe.id === newHero.id);
