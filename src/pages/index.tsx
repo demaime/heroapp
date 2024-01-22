@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import useGetInitialTeamMembers from "@/hooks/useGetInitialTeamMembers";
-import Router, { useRouter } from "next/router";
+import Router from "next/router";
 import SearchBar from "@/components/SearchBar";
 import { Hero } from "@/types/hero-type";
 import { Fade } from "react-awesome-reveal";
@@ -38,18 +38,6 @@ export default function Home() {
 
     if (!existingHero) {
       if (myTeam.length < 6) {
-        const goodHeroes = myTeam.filter(
-          (hero) => hero.biography.alignment === "good"
-        );
-        const evilHeroes = myTeam.filter(
-          (hero) => hero.biography.alignment === "bad"
-        );
-        const neutralHeroes = myTeam.filter(
-          (hero) =>
-            hero.biography.alignment === "neutral" ||
-            hero.biography.alignment === "-"
-        );
-
         const alignmentLimit = (alignment) => {
           const count = myTeam.filter(
             (hero) =>
@@ -117,7 +105,6 @@ export default function Home() {
           isLoading={isLoading}
           setResults={setResults}
           results={results}
-          chosenHero={chosenHero}
           setChosenHero={setChosenHero}
         />
         <Fade className="w-full">

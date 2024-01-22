@@ -18,3 +18,5 @@ SuperHeroApp es una aplicación para crear un equipo de superhéroes que consumi
 ### REVISAR TEAMMEMBERS: SI HAY HEROES EN A URL Y ACTUALIZAS, APARECE PRIMERO COMO SI NO HUBIERA.
 
 ### SE PUEDE HACKEAR LA TEAM COMP PONIENDO IDS EN LA URL
+
+### PowerStats.tsx, TeamStats.tsx, SearchBar.tsx, index.tsx ver TS

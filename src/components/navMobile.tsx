@@ -61,8 +61,8 @@ export const NavMobile = () => {
                       onClick={() => setOpen((prev) => !prev)}
                       className={"flex items-center justify-between"}
                       href={{
-                        pathname: route.href, // Usa la ruta completa
-                        query: router.query, // Asegura que los parámetros de la URL se mantengan
+                        pathname: route.href,
+                        query: router.query,
                       }}
                     >
                       <span className="flex gap-1 text-lg">{route.title}</span>

@@ -21,7 +21,7 @@ export default function SearchBar({
   isLoading,
   setResults,
   results,
-  chosenHero,
+
   setChosenHero,
 }: SearchBarProps) {
   const [ulResultsVisibility, setUlResultsVisibility] = useState(false);

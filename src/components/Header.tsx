@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Image from "next/image";
 import Tippy from "@tippyjs/react";
 import { NavDesktop } from "./navDesktop";
