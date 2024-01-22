@@ -14,7 +14,7 @@ export default function TeamMembers({ team }: TeamMembersProps) {
         team.map((hero) => (
           <li
             key={hero.id}
-            className=" w-full flex items-center justify-center py-2"
+            className="w-full flex items-center justify-center py-2"
           >
             <Tippy
               zIndex={999}
@@ -26,13 +26,13 @@ export default function TeamMembers({ team }: TeamMembersProps) {
                   <p
                     className={
                       hero.biography?.alignment === "good"
-                        ? "text-green-300"
+                        ? "text-green-300 font-bold"
                         : hero.biography?.alignment === "bad"
-                        ? "text-red-300"
+                        ? "text-red-300 font-bold"
                         : hero.biography?.alignment === "neutral" ||
                           hero.biography?.alignment === "-"
-                        ? "text-blue-300"
-                        : "text-gray-300"
+                        ? "text-blue-300 font-bold"
+                        : "text-gray-300 font-bold"
                     }
                   >
                     {hero.biography?.alignment.toUpperCase()}
@@ -82,7 +82,7 @@ export default function TeamMembers({ team }: TeamMembersProps) {
               }
             >
               <Image
-                className="rounded-lg shadow-lg shadow-gray-700"
+                className="rounded-3xl teamview-member-shadow"
                 src={hero.image?.url}
                 alt="Hero Image"
                 height={100}

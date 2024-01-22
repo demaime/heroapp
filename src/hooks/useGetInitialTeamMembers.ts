@@ -23,7 +23,7 @@ export default function useGetInitialTeamMembers() {
       });
 
       const results = await Promise.all(promises);
-      console.log(results);
+
       setMyTeam(results.map((res) => res.data));
       setHasLoaded(true);
     }

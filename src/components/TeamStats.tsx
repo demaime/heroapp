@@ -53,7 +53,7 @@ export default function TeamStats({ team }: TeamStatsProps) {
     return { totals: totals, average };
   }
 
-  const { totals: totals, average } = getTotalsAndAverage(team);
+  const { totals, average } = getTotalsAndAverage(team);
 
   return (
     <div className="text-blue-200">

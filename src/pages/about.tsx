@@ -7,7 +7,6 @@ export default function About() {
   return (
     <div id="full-container" className="bg-gray-900 text-white relative">
       <Header />
-
       <ul className="w-full flex flex-col items-center">
         <li className="w-100 flex justify-around mt-4">
           <Link href={"https://www.alkemy.org/"}>
@@ -46,20 +45,24 @@ export default function About() {
       <footer className="w-full flex justify-evenly absolute bottom-2">
         <p className="text-gray-500">Developed by</p>
         <div className="flex items-center justify-evenly">
-          <Image
-            className="mx-2"
-            src="/assets/github.png"
-            alt="github"
-            width={25}
-            height={25}
-          />
-          <Image
-            className="mx-2"
-            src="/assets/linkedin.png"
-            alt="linkedin"
-            width={25}
-            height={25}
-          />
+          <Link href={"https://github.com/demaime"}>
+            <Image
+              className="mx-2"
+              src="/assets/github.png"
+              alt="github"
+              width={25}
+              height={25}
+            />
+          </Link>
+          <Link href={"https://ar.linkedin.com/in/aimedemian"}>
+            <Image
+              className="mx-2"
+              src="/assets/linkedin.png"
+              alt="linkedin"
+              width={25}
+              height={25}
+            />
+          </Link>
         </div>
       </footer>
     </div>

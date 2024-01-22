@@ -60,8 +60,6 @@ export default function SearchBar({
     };
   }, [ulResultsVisibility]);
 
-  // console.log(inputRef.current);
-
   // function debounce(callback: () => void, delay: number) {
   //   let timeoutId;
 
