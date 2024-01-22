@@ -7,29 +7,28 @@ import { NavMobile } from "./navMobile";
 const helpText = (
   <div>
     <strong>
-      SuperHeroApp es una aplicación para crear un equipo de superhéroes que
-      consumirá una API externa y mostrará diferentes atributos a nivel
-      individual de cada miembro y del equipo consolidado. Se deben tener en
-      cuenta los siguientes requisitos:
+      SuperHeroApp is an application to create a team of superheroes that will
+      consume an external API and display different attributes at the level
+      individual of each member and of the consolidated team. They must be taken
+      into account Consider the following requirements:
     </strong>
     <ul>
       <br />
-      <li>- El tamaño del equipo es de 6 heroes</li>
+      <li>- The team size is 6 heroes</li>
       <br />
       <li>
-        - No se puede tener mas de 3 heroes con la misma alineación, ya sea
-        <em> good</em>, <em>evil</em> o <em>neutral</em>
+        - You cannot have more than 3 heroes with the same alignment, either
+        <em> good</em>, <em>evil</em> or <em>neutral</em>
       </li>
       <br />
-      <li>- No se pueden repetir integrantes</li>
-      <br />
-      <li>
-        - Puedes ver los atributos de los heroes buscandolos en este sitio
-      </li>
+      <li>- Members cannot be repeated</li>
       <br />
       <li>
-        - Puedes ver los atributos promedio del equipo en la vista My Team
+        - You can see the attributes of the heroes by searching for them in the
+        Search section
       </li>
+      <br />
+      <li>- You can see the average team attributes in the My Team view</li>
     </ul>
   </div>
 );
