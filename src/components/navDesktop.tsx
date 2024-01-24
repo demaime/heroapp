@@ -27,7 +27,7 @@ export const NavDesktop = () => {
         return (
           <li key={route.title}>
             <Link
-              className="flex items-center underline-offset-8 hover:underline"
+              className="flex items-center pb-1 underline-hover"
               href={{
                 pathname: route.href,
                 query: router.query,

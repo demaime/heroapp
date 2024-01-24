@@ -137,3 +137,18 @@
     bottom: -25px;
   }
 }
+
+.underline-hover {
+  text-underline-offset: 8px;
+  background: linear-gradient(to right, rgb(252, 252, 252), rgb(255, 255, 255)),
+    linear-gradient(to right, #bfdbfe, #bfdbfe, #bfdbfe);
+  background-size: 100% 0.1em, 0 0.1em;
+  background-position: 100% 100%, 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 400ms;
+}
+
+.underline-hover:hover,
+.underline-hover:focus {
+  background-size: 0 0.1em, 100% 0.1em;
+}

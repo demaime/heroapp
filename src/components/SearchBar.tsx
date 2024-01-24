@@ -103,7 +103,7 @@ export default function SearchBar({
           className={
             isLoading
               ? "resultsList w-10/12 max-h-60 overflow-auto z-50"
-              : "resultsList w-10/12 max-h-60 overflow-auto border-b bg-gray-800 fixed top-[8.3rem] z-50 md:top-[10.5rem]"
+              : "resultsList w-10/12 max-h-60 overflow-auto border-b bg-gray-800 fixed top-[8.3rem] z-50 md:top-[10.7rem]"
           }
         >
           {isLoading && (
