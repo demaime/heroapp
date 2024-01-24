@@ -4,6 +4,33 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaLink } from "react-icons/fa";
 
+const libraries = [
+  {
+    title: "axios",
+    href: "https://axios-http.com/es/",
+  },
+  {
+    title: "hamburguer-react",
+    href: "https://hamburger-react.netlify.app/",
+  },
+  {
+    title: "tippy",
+    href: "https://github.com/atomiks/tippyjs-react",
+  },
+  {
+    title: "react-awesome-reveal",
+    href: "https://react-awesome-reveal.morello.dev/",
+  },
+  {
+    title: "react-icons",
+    href: "https://react-icons.github.io/react-icons/",
+  },
+  {
+    title: "react-tostify",
+    href: "https://github.com/fkhadra/react-toastify",
+  },
+];
+
 export default function About() {
   return (
     <div id="full-container" className="bg-gray-900 text-gray-300 relative">
@@ -18,61 +45,14 @@ export default function About() {
           libraries
         </h1>
         <ul className="w-full flex flex-col items-center">
-          <li className="w-100 flex justify-around ">
-            <Link
-              href={"https://axios-http.com/es/"}
-              className="flex items-center"
-            >
-              <FaLink size={12} className="mr-2" />
-              axios
-            </Link>
-          </li>
-          <li className="w-100 flex justify-around">
-            <Link
-              className="flex items-center"
-              href={"https://hamburger-react.netlify.app"}
-            >
-              <FaLink size={12} className="mr-2" />
-              hamburguer-react
-            </Link>
-          </li>
-          <li className="w-100 flex justify-around ">
-            <Link
-              href={"https://github.com/atomiks/tippyjs-react"}
-              className="flex items-center"
-            >
-              {" "}
-              <FaLink size={12} className="mr-2" />
-              tippy
-            </Link>
-          </li>
-          <li className="w-100 flex justify-around ">
-            <Link
-              href={"https://react-awesome-reveal.morello.dev"}
-              className="flex items-center"
-            >
-              <FaLink size={12} className="mr-2" />
-              react-awesome-reveal
-            </Link>
-          </li>
-          <li className="w-100 flex justify-around ">
-            <Link
-              href={"https://react-icons.github.io/react-icons/"}
-              className="flex items-center"
-            >
-              <FaLink size={12} className="mr-2" />
-              react-icons
-            </Link>
-          </li>
-          <li className="w-100 flex justify-around ">
-            <Link
-              href={"https://github.com/fkhadra/react-toastify"}
-              className="flex items-center"
-            >
-              <FaLink size={12} className="mr-2" />
-              react-toastify
-            </Link>
-          </li>
+          {libraries.map((librarie) => (
+            <li key={librarie.title} className="w-full flex justify-around">
+              <Link className="flex items-center" href={librarie.href}>
+                <FaLink size={12} className="mr-2" />
+                {librarie.title}
+              </Link>
+            </li>
+          ))}
         </ul>
       </div>
       <footer className="w-full flex justify-evenly absolute bottom-4">
