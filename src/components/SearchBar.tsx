@@ -103,19 +103,19 @@ export default function SearchBar({
           className={
             isLoading
               ? "resultsList w-10/12 max-h-60 overflow-auto z-50"
-              : "resultsList w-10/12 max-h-60 overflow-auto border-b bg-gray-800 fixed top-[8.3rem] z-50"
+              : "resultsList w-10/12 max-h-60 overflow-auto border-b bg-gray-800 fixed top-[8.3rem] z-50 md:top-[11.5rem]"
           }
         >
           {isLoading && (
             <li className="heroResult fixed top-28 flex justify-center w-10/12">
-              <TbLoaderQuarter className="animate-spin text-3xl mt-6 " />
+              <TbLoaderQuarter className="animate-spin text-3xl mt-6 md:mt-[4.5rem]" />
             </li>
           )}
 
           {!isLoading &&
             (results ? (
               results.length < 1 ? (
-                <li className="heroResult italic p-1 text-xs text-gray-300 bg-gray-900">
+                <li className="heroResult italic p-1 text-xs text-gray-900 bg-gray-400">
                   No results
                 </li>
               ) : (

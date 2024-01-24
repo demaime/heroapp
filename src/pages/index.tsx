@@ -115,17 +115,20 @@ export default function Home() {
         </Fade>
         {chosenHero && (
           <>
-            <div className="w-11/12 rounded" style={{ marginTop: "2px" }}>
+            <div
+              className="w-11/12 rounded flex justify-center"
+              style={{ marginTop: "2px" }}
+            >
               {chosenHero.biography.alignment === "good" ? (
-                <div className="alignment-shadow w-full h-full flex items-end justify-center pb-1 text-2xl text-green-500">
+                <div className="alignment-shadow w-full h-full flex items-end justify-center pb-1 text-2xl text-green-500 md:w-2/5">
                   GOOD
                 </div>
               ) : chosenHero.biography.alignment === "bad" ? (
-                <div className="alignment-shadow w-full h-full flex items-end justify-center pb-1 text-2xl text-red-500">
+                <div className="alignment-shadow w-full h-full flex items-end justify-center pb-1 text-2xl text-red-500 md:w-2/5">
                   EVIL
                 </div>
               ) : (
-                <div className="alignment-shadow w-full h-full flex items-end justify-center pb-1 text-2xl text-blue-300">
+                <div className="alignment-shadow w-full h-full flex items-end justify-center pb-1 text-2xl text-blue-300 md:w-2/5">
                   NEUTRAL
                 </div>
               )}

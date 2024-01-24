@@ -46,16 +46,10 @@
 .mo-fire {
   position: absolute;
   width: 100%;
-  bottom: -15px;
+  bottom: -18px;
   height: auto;
   z-index: 1;
 }
-/* 
-#svg-view {
-  width: 252px;
-  height: 125px;
-  left: 0px;
-} */
 
 .mo-fire svg {
   width: 100%;
@@ -123,5 +117,23 @@
   100% {
     transform: translate(-10px, -40px) rotate(180deg);
     opacity: 0;
+  }
+}
+
+@media (min-width: 640px) {
+  .mo-fire {
+    bottom: -22px;
+  }
+}
+
+@media (min-width: 768px) {
+  .mo-fire {
+    bottom: -20px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .mo-fire {
+    bottom: -25px;
   }
 }
