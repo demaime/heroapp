@@ -103,12 +103,12 @@ export default function SearchBar({
           className={
             isLoading
               ? "resultsList w-10/12 max-h-60 overflow-auto z-50"
-              : "resultsList w-10/12 max-h-60 overflow-auto border-b bg-gray-800 fixed top-[8.3rem] z-50 md:top-[11.5rem]"
+              : "resultsList w-10/12 max-h-60 overflow-auto border-b bg-gray-800 fixed top-[8.3rem] z-50 md:top-[10.5rem]"
           }
         >
           {isLoading && (
             <li className="heroResult fixed top-28 flex justify-center w-10/12">
-              <TbLoaderQuarter className="animate-spin text-3xl mt-6 md:mt-[4.5rem]" />
+              <TbLoaderQuarter className="animate-spin text-3xl mt-6 md:mt-[3.8rem]" />
             </li>
           )}
 

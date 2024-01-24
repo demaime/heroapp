@@ -63,8 +63,8 @@ export default function TeamStats({ team }: TeamStatsProps) {
             <thead>
               <tr>
                 <th className="py-2 px-4 border-b"></th>
-                <th className="py-2 px-4 border-b">TOTAL</th>
-                <th className="py-2 px-4 border-b">AVERAGE</th>
+                <th className="py-2 px-4 border-b text-blue-400">TOTAL</th>
+                <th className="py-2 px-4 border-b text-blue-400">AVERAGE</th>
               </tr>
             </thead>
             <tbody>
@@ -84,7 +84,7 @@ export default function TeamStats({ team }: TeamStatsProps) {
                     {totals[stat]}
                   </td>
                   <td className="py-2 px-4 border-b text-center">
-                    {average[stat].toFixed(1)}
+                    {average[stat] ? average[stat].toFixed(1) : 0}
                   </td>
                 </tr>
               ))}

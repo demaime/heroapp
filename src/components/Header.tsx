@@ -25,10 +25,12 @@ const helpText = (
       <br />
       <li>
         - You can see the attributes of the heroes by searching for them in the
-        Search section
+        &#39;Search&#39; section
       </li>
       <br />
-      <li>- You can see the average team attributes in the My Team view</li>
+      <li>
+        - You can see the average team attributes in the &#39;My Team&#39; view
+      </li>
     </ul>
   </div>
 );
@@ -41,7 +43,7 @@ export default function Header() {
         <div className="flex items-center justify-center">
           <Tippy content={helpText} zIndex={99999}>
             <Image
-              className="opacity-50 hover:opacity-100"
+              className="opacity-50 hover:opacity-100 md:ml-8"
               src={"/assets/question.png"}
               alt={"Help"}
               width={30}

@@ -92,7 +92,9 @@ export default function TeamMembers({ team }: TeamMembersProps) {
           </li>
         ))
       ) : (
-        <p className="text-white">NO HERO SELECTED</p>
+        <p className="text-gray-400 absolute m-auto left-0 right-0 flex items-center justify-center h-1/2 text-2xl">
+          ~ NO HERO SELECTED ~
+        </p>
       )}
     </ul>
   );
