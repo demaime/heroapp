@@ -21,28 +21,38 @@ export default function SearchBar({
   isLoading,
   setResults,
   results,
-
   setChosenHero,
 }: SearchBarProps) {
   const [ulResultsVisibility, setUlResultsVisibility] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // define la funcion para buscar heroes. setea la visibilidad de la lista de resultados
+  // Función debounce para retrasar la llamada a searchHeroes
+  const debounce = (func: Function, delay: number) => {
+    let timer: ReturnType<typeof setTimeout>;
+    return function (this: any, ...args: any[]) {
+      clearTimeout(timer);
+      timer = setTimeout(() => func.apply(this, args), delay);
+    };
+  };
+
+  const debouncedSearchHeroes = debounce(searchHeroes, 300); // 300ms de retraso
+
   async function searchHeroes() {
     const apiHeroes = `https://superheroapi.com/api.php/${accessToken}/search/${inputRef.current?.value}`;
 
     setUlResultsVisibility(true);
     setIsLoading(true);
-    let res = await axios.get(apiHeroes);
-    setIsLoading(false);
-    if (res.data.results) {
-      setResults(res.data.results);
-    } else {
+    try {
+      const res = await axios.get(apiHeroes);
+      setIsLoading(false);
+      setResults(res.data.results || []);
+    } catch (error) {
+      console.error("Error fetching heroes:", error);
+      setIsLoading(false);
       setResults([]);
     }
   }
 
-  //  efecto para cerrar la lista de resultados cuando se clickea fuera del <li>, <input> o <span>. Ver si se puede optimizar
   useEffect(() => {
     const closeUlResultsList = (event: MouseEvent) => {
       if (!ulResultsVisibility) return;
@@ -59,20 +69,6 @@ export default function SearchBar({
       document.removeEventListener("click", closeUlResultsList);
     };
   }, [ulResultsVisibility]);
-
-  // function debounce(callback: () => void, delay: number) {
-  //   let timeoutId;
-
-  //   return function () {
-  //     clearTimeout(timeoutId);
-  //     timeoutId = setTimeout(callback, delay);
-  //   };
-  // }
-
-  // debounce(() => console.log("hola"), 1000);
-  // debounce(() => console.log("hola"), 1000);
-
-  //funciones para evitar el scroll de la pagina cuando el input esta focus
 
   const [inputFocus, setInputFocus] = useState(false);
 
@@ -93,7 +89,7 @@ export default function SearchBar({
         placeholder="Type some character to search..."
         className="heroResult w-11/12 outline-none border-r-4 border rounded-xl py-2 px-4 pr-2 bg-blue-100 text-gray-900 z-50"
         ref={inputRef}
-        onChange={() => searchHeroes()}
+        onChange={debouncedSearchHeroes}
         onFocus={handleFocus}
         onBlur={handleBlur}
       />
