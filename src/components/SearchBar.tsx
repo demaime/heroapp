@@ -26,15 +26,15 @@ export default function SearchBar({
   const [ulResultsVisibility, setUlResultsVisibility] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // const debounce = (func: Function, delay: number) => {
-  //   let timer: ReturnType<typeof setTimeout>;
-  //   return function (this: any, ...args: any[]) {
-  //     clearTimeout(timer);
-  //     timer = setTimeout(() => func.apply(this, args), delay);
-  //   };
-  // };
+  const debounce = (func: Function, delay: number) => {
+    let timer: ReturnType<typeof setTimeout>;
+    return function (this: any, ...args: any[]) {
+      clearTimeout(timer);
+      timer = setTimeout(() => func.apply(this, args), delay);
+    };
+  };
 
-  // const debouncedSearchHeroes = debounce(searchHeroes, 300);
+  const debouncedSearchHeroes = debounce(searchHeroes, 300);
 
   async function searchHeroes() {
     const apiHeroes = `https://superheroapi.com/api.php/${accessToken}/search/${inputRef.current?.value}`;
