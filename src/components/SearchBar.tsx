@@ -26,7 +26,6 @@ export default function SearchBar({
   const [ulResultsVisibility, setUlResultsVisibility] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  
   // const debounce = (func: Function, delay: number) => {
   //   let timer: ReturnType<typeof setTimeout>;
   //   return function (this: any, ...args: any[]) {
@@ -35,7 +34,7 @@ export default function SearchBar({
   //   };
   // };
 
-  // const debouncedSearchHeroes = debounce(searchHeroes, 300); 
+  // const debouncedSearchHeroes = debounce(searchHeroes, 300);
 
   async function searchHeroes() {
     const apiHeroes = `https://superheroapi.com/api.php/${accessToken}/search/${inputRef.current?.value}`;
@@ -89,7 +88,7 @@ export default function SearchBar({
         placeholder="Type some character to search..."
         className="heroResult w-11/12 outline-none border-r-4 border rounded-xl py-2 px-4 pr-2 bg-blue-100 text-gray-900 z-50"
         ref={inputRef}
-        onChange={debouncedSearchHeroes}
+        onChange={searchHeroes}
         onFocus={handleFocus}
         onBlur={handleBlur}
       />
