@@ -15,7 +15,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "tippy.js/dist/tippy.css";
 
 export default function Home() {
-  const accessToken = process.env.NEXT_PUBLIC_ACCESS_TOKEN_PRIVATE;
+  const accessToken = 6728050277235129;
 
   const [isLoading, setIsLoading] = useState(false);
   const [results, setResults] = useState([]);
